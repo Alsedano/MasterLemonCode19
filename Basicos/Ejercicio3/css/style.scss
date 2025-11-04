@@ -1,0 +1,42 @@
+.container {
+  background-color: skyblue;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.box {
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.selected {
+  background-color: royalblue;
+}
+
+@media screen and (width > 501px) {
+  .container {
+    flex-direction: row;
+    width: 1000px;
+  }
+
+  .box {
+    height: 50px;
+    width: 100px;
+    padding: 10px;
+  }
+}
+
+@media screen and (width < 500px) {
+  .container {
+    flex-direction: column;
+    width: 400px;
+  }
+
+  .box {
+    height: 50px;
+    width: 100%;
+    padding: 10px;
+  }
+}
