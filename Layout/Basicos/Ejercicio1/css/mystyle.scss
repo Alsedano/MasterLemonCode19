@@ -1,0 +1,68 @@
+@use "sass:color";
+
+$base-color-1: red;
+$base-color-2: blue;
+$base-color-3: green;
+
+$font-color: white;
+
+.box {
+  width: 100px;
+  height: 100px;
+  margin: 5px;
+  border-radius: 5px;
+
+  text-align: center;
+  vertical-align: middle;
+  line-height: 100px;
+  font-weight: bold;
+}
+
+.container-1,
+.container-2,
+.container-3 {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+
+@mixin styleBoxDarken($base-color, $font-color, $darkLevel) {
+  background-color: color.adjust($base-color, $lightness: $darkLevel * -5%);
+  color: color.adjust($font-color, $lightness: $darkLevel * 50%);
+}
+
+@mixin styleBoxLighten($base-color, $font-color, $lightLevel) {
+  background-color: color.adjust($base-color, $lightness: $lightLevel * 5%);
+  color: color.adjust($font-color, $lightness: $lightLevel * -50%);
+}
+
+@for $indexContainer from 1 through 3 {
+  $mainColor: $base-color-1;
+  @if $indexContainer == 1 {
+    .container-#{$indexContainer} > .base-color {
+      background-color: $mainColor;
+    }
+  } @else if $indexContainer == 2 {
+    $mainColor: $base-color-2;
+    .container-#{$indexContainer} > .base-color {
+      background-color: $mainColor;
+    }
+  } @else if $indexContainer == 3 {
+    $mainColor: $base-color-3;
+    .container-#{$indexContainer} > .base-color {
+      background-color: $mainColor;
+    }
+  }
+
+  @for $indexBox from 1 through 4 {
+    .container-#{$indexContainer} > .lighten-#{$indexBox} {
+      @include styleBoxLighten($mainColor, $font-color, $indexBox);
+    }
+  }
+
+  @for $indexBox from 1 through 4 {
+    .container-#{$indexContainer} > .darken-#{$indexBox} {
+      @include styleBoxDarken($mainColor, $font-color, $indexBox);
+    }
+  }
+}
