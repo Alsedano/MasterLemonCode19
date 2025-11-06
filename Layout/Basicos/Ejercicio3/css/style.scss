@@ -9,10 +9,9 @@
 .box {
   text-align: center;
   box-sizing: border-box;
-}
-
-.selected {
-  background-color: royalblue;
+  &:hover {
+    background-color: royalblue;
+  }
 }
 
 @media screen and (width > 501px) {

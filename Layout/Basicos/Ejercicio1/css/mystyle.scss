@@ -32,7 +32,7 @@ $font-color: white;
 }
 
 @mixin styleBoxLighten($base-color, $font-color, $lightLevel) {
-  background-color: color.adjust($base-color, $lightness: $lightLevel * 5%);
+  background-color: color.adjust($base-color, $lightness: $lightLevel * 8%);
   color: color.adjust($font-color, $lightness: $lightLevel * -50%);
 }
 
