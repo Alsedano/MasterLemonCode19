@@ -5,7 +5,6 @@ body {
   color: white;
   padding-right: 20px;
   padding-bottom: 20px;
-  box-sizing: border-box;
 
   font-family: "Jost";
   font-optical-sizing: auto;
@@ -72,16 +71,13 @@ header {
   }
 }
 
-section {
-  margin-bottom: 50px;
-}
-
 .top {
   display: flex;
   flex-wrap: wrap-reverse;
   flex-direction: row-reverse;
   justify-content: flex-end;
   gap: 4px;
+  margin-bottom: 50px;
 }
 
 @mixin carrousselImages {
@@ -91,8 +87,16 @@ section {
   gap: 4px;
 }
 
+@mixin imageZoom {
+  flex: 1;
+  &:hover {
+    flex-grow: 1.25;
+  }
+}
+
 .first {
   @include carrousselImages();
+  margin-bottom: 50px;
 }
 
 .second {
@@ -101,28 +105,38 @@ section {
 
 .top-item {
   min-width: 225px;
-  flex: 1;
+  @include imageZoom();
 }
 
 .item {
   min-width: 250px;
-  flex: 1;
-  &:hover {
-    flex-grow: 1.25;
-  }
+  @include imageZoom();
 }
 
-img {
-}
-
-.top-item img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
+.top-item img,
 .item img {
   width: 100%;
   height: 100%;
   object-fit: contain;
+}
+
+@media screen and (width < 1280px) {
+  .platform-title {
+    display: none;
+  }
+
+  #top-text {
+    &:before {
+      content: "3";
+    }
+  }
+
+  .top {
+    & div:nth-child(1) {
+      display: none;
+    }
+    & div:nth-child(2) {
+      display: none;
+    }
+  }
 }
