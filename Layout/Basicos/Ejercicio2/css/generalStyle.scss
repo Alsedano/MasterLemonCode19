@@ -1,3 +1,6 @@
+@use "css/styleA.scss";
+//@use "css/styleB.scss";
+
 .container {
   display: flex;
   flex-direction: column;
@@ -12,6 +15,7 @@
   font-family: cursive;
   box-sizing: border-box;
   padding: 20px;
+  border-radius: var(--border-radius);
   border: 1px solid darkgray;
 
   &.color1 {
@@ -24,6 +28,9 @@
 
   &.color3 {
     background-color: var(--color3);
+  }
+  &.shadow {
+    box-shadow: var(--box-shadow);
   }
 }
 

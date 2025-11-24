@@ -1,16 +1,9 @@
-@use "css/generalStyle.scss";
-
 html {
   --color1: blue;
   --color2: darkblue;
   --color3: turquoise;
   --principalFont: "Arial", sans-serif;
   --secondaryFont: "Arial", sans-serif;
-}
-
-.box {
-  border-radius: 5px;
-  &.shadow {
-    box-shadow: 10px 10px 5px grey;
-  }
+  --box-shadow: 10px 10px 5px grey;
+  --border-radius: 5px;
 }

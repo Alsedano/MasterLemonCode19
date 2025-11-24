@@ -17,7 +17,6 @@
 @media screen and (width > 501px) {
   .container {
     flex-direction: row;
-    width: 1000px;
   }
 
   .box {
@@ -30,7 +29,6 @@
 @media screen and (width < 500px) {
   .container {
     flex-direction: column;
-    width: 400px;
   }
 
   .box {

@@ -1,9 +1,6 @@
 .grid-container {
   width: 400px;
-  height: 600px;
   display: grid;
-  grid-template-columns: 100%;
-  grid-template-rows: repeat(5, 1fr);
   padding: 10px;
   border: 1px solid lightgray;
 }
@@ -33,4 +30,6 @@
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   font-size: 20px;
   color: white;
+  border-width: 0;
+  padding: 15px;
 }

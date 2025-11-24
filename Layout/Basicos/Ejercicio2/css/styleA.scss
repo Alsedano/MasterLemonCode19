@@ -1,15 +1,9 @@
-@use "css/generalStyle.scss";
-
 html {
   --color1: red;
   --color2: brown;
   --color3: pink;
   --principalFont: "Arial", sans-serif;
   --secondaryFont: cursive;
-}
-
-.box {
-  &.shadow {
-    box-shadow: -10px 10px 5px grey;
-  }
+  --box-shadow: -10px 10px 5px grey;
+  --border-radius: 0;
 }
