@@ -22,9 +22,7 @@ const fib = (n) => {
   let current = 1; // f(n-1)
 
   for (let i = 2; i <= n; i++) {
-    const next = prev + current;
-    prev = current;
-    current = next;
+    [prev, current] = [current, prev + current];
   }
 
   return current;
