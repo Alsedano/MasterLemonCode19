@@ -1,5 +1,5 @@
 {
-  "name": "06_custom-css",
+  "name": "07_boostrap",
   "version": "1.0.0",
   "description": "",
   "type": "module",
@@ -23,5 +23,8 @@
     "webpack": "^5.105.4",
     "webpack-cli": "^6.0.1",
     "webpack-dev-server": "^5.2.3"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.8"
   }
 }
