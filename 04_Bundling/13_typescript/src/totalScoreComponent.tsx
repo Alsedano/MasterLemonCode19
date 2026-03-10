@@ -1,0 +1,32 @@
+import React from "react";
+import { getTotalScore } from "./averageService";
+import * as classes from './totalScoreComponentStyles.scss';
+
+export const TotalScoreComponent: React.FC = () => {
+  const [totalScore, setTotalScore] = React.useState(0);
+
+  React.useEffect(() => {
+    const scores = [10, 20, 30, 40, 50];
+    setTotalScore(getTotalScore(scores));
+  }, []);
+
+  return (
+    <div>
+      <div className="card" style={{ width: 180 }}>
+        <div className="card-body">
+          <h5 className="card-title">Card title</h5> {/* text-danger porque en la v5.3.8 de bootstrap ha debido de cambiar */}
+          <p className="card-text">
+            Some quick example text to build on the card title and make up the
+            bulk of the card's content.
+          </p>
+ 		  <p className={classes.resultBackground}>
+        	 Students total score: {totalScore}
+      	  </p>
+          <a href="#" className="btn btn-primary">
+            Go somewhere
+          </a>
+        </div>
+      </div>
+    </div>
+  );
+};
