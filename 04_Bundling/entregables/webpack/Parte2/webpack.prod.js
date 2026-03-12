@@ -1,6 +1,9 @@
 import { merge } from "webpack-merge";
 import common from "./webpack.common.js";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
+import Dotenv from "dotenv-webpack";
+import CompressionPlugin from "compression-webpack-plugin";
+import zlib from "node:zlib";
 
 export default merge(common, {
   mode: "production",
@@ -54,5 +57,34 @@ export default merge(common, {
       filename: "css/[name].[chunkhash].css",
       chunkFilename: "[id].css",
     }),
+    new Dotenv({
+      path: "./prod.env",
+    }),
+    new CompressionPlugin({
+      filename: "[path][base].gz",
+      algorithm: "gzip",
+      test: /\.tsx$|\.png$|\.jpg$|\.html$|\.scss$/,
+      threshold: 10240,
+      minRatio: 0.8,
+    }),
+    new CompressionPlugin({
+      filename: "[path][base].br",
+      algorithm: "brotliCompress",
+      test: /\.tsx$|\.png$|\.jpg$|\.html$|\.scss$/,
+      compressionOptions: {
+        params: {
+          [zlib.constants.BROTLI_PARAM_QUALITY]: 11,
+        },
+      },
+      threshold: 10240,
+      minRatio: 0.8,
+    }),
   ],
+  /* I have to put this because react-dom since v15.4 has 532.62KB based on BundleAnalyzerPlugin
+  https://stackoverflow.com/questions/42715671/react-dom-blowing-out-webpack-bundle-size-massively*/ 
+  performance: {
+    hints: 'warning',
+    maxEntrypointSize: 512000,
+    maxAssetSize: 512000
+  }
 });
