@@ -7,7 +7,7 @@ export const HelloWorldComponent: React.FC = () => {
     <div>
       <img src={logoImg} alt="logo_Lemoncode" />
       <h1 className={classes.titulo}>Hola mundo</h1>
-      <p>Api server is ${process.env.API_BASE}</p>
+      <p>Api server is {process.env.API_BASE}</p>
     </div>
   );
 };
