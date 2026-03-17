@@ -11,3 +11,7 @@ export const HelloWorldComponent: React.FC = () => {
     </div>
   );
 };
+
+console.log(`Api server is ${config.API_BASE}`);
+
+//const compError: number = "error";

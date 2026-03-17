@@ -3,4 +3,8 @@ import { HelloWorldComponent } from "./helloWorldComponent";
 
 const root = createRoot(document.getElementById("root"));
 
-root.render(<HelloWorldComponent />);
+root.render(
+    <div>
+      <HelloWorldComponent />
+    </div>
+);
