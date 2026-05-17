@@ -1,6 +1,6 @@
+import { routes } from "@/router";
 import React from "react";
 import { Link, useParams } from "react-router";
-import { AuthContext } from "./auth.provider";
 
 interface MemberDetailEntity {
   id: string;
@@ -10,9 +10,17 @@ interface MemberDetailEntity {
   bio: string;
 }
 
+const createDefaultMemberDetail = () => ({
+  id: "",
+  login: "",
+  name: "",
+  company: "",
+  bio: "",
+});
+
 export const DetailPage: React.FC = () => {
-  const [member, setMember] = React.useState<MemberDetailEntity | undefined>(
-    undefined,
+  const [member, setMember] = React.useState<MemberDetailEntity>(
+    createDefaultMemberDetail(),
   );
   const { id } = useParams();
 
@@ -31,7 +39,7 @@ export const DetailPage: React.FC = () => {
       <p> name: {member?.name}</p>
       <p> company: {member?.company}</p>
       <p> bio: {member?.bio}</p>
-      <Link to="/list">Back to list page</Link>
+      <Link to={routes.list}>Back to list page</Link>
     </>
   );
 };

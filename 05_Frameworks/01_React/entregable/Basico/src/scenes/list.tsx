@@ -1,9 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Header } from "./header";
-import { Search } from "./search";
 import { OrgContext } from "./search.provider";
-import { AuthContext } from "./auth.provider";
+import { Search } from "./search";
+import { routes } from "@/router";
+import { AppLayout } from "@/layouts";
 
 interface MemberEntity {
   id: string;
@@ -25,7 +26,7 @@ export const ListPage: React.FC = () => {
 
   return (
     <>
-      <Header></Header>
+      <Header />
       <Search></Search>
       <div className="list-user-list-container">
         <span className="list-header">Avatar</span>
@@ -35,11 +36,10 @@ export const ListPage: React.FC = () => {
           <React.Fragment key={member.id}>
             <img src={member.avatar_url} />
             <span>{member.id}</span>
-            <Link to={`/detail/${member.login}`}>{member.login}</Link>
+            <Link to={routes.detail(member.login)}>{member.login}</Link>
           </React.Fragment>
         ))}
       </div>
-      <Link to="/detail">Navigate to detail page</Link>
     </>
   );
 };
