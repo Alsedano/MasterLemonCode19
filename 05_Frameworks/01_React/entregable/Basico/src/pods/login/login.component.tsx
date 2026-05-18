@@ -1,13 +1,12 @@
 import React from "react";
-import { AuthContext } from "./auth.provider";
+import { AuthContext } from "./login.provider";
 
-export const LoginPage: React.FC = () => {
+export const LoginComponent: React.FC = () => {
   const { user, handleChangeUser, validateUser } =
     React.useContext(AuthContext);
   return (
     <>
-      <h2>Hello from login page</h2>
-
+      <h2>Login</h2>
       <div>
         <div>
           <label>Username: </label>

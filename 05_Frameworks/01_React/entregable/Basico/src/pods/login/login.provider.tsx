@@ -1,5 +1,5 @@
 import React from "react";
-import { LoginPage } from "./login";
+import { LoginComponent } from "./login.component";
 
 interface User {
   name: string;
@@ -43,7 +43,7 @@ export const AuthProvider: React.FC<React.PropsWithChildren> = ({
 
   return (
     <AuthContext value={{ user, handleChangeUser, validateUser }}>
-      {isValidUser ? children : <LoginPage />}
+      {isValidUser ? children : <LoginComponent />}
     </AuthContext>
   );
 };

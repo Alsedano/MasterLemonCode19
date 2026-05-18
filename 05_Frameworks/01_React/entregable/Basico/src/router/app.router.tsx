@@ -5,16 +5,16 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import { ListPage, DetailPage } from "@/scenes";
 import { switchRoutes } from "./routes";
+import { DetailPage, ListScene } from "@/scenes";
 
 export const AppRouter2: React.FC = () => {
   return (
     <Router>
       <Routes>
-        <Route path={switchRoutes.list} element={<ListPage />} />
+        <Route path={switchRoutes.list} element={<ListScene />} />
         <Route path={switchRoutes.detail} element={<DetailPage />} />
-        <Route path="*" element={<Navigate to={switchRoutes.root} />} />
+        <Route path="*" element={<Navigate to={switchRoutes.list} />} />
       </Routes>
     </Router>
   );

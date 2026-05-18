@@ -1,7 +1,7 @@
 import React from "react";
-import { AuthProvider } from "@/scenes/auth.provider";
-import { OrganizationProvider } from "./scenes/search.provider";
+import { AuthProvider } from "@/pods/login/login.provider";
 import { AppRouter2 } from "./router";
+import { OrganizationProvider } from "./pods/search/search.provider";
 
 export const App = () => {
   return (

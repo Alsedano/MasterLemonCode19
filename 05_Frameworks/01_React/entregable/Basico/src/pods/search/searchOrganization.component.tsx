@@ -1,10 +1,16 @@
 import React from "react";
-import { OrgContext } from "./search.provider";
 
-export const Search: React.FC = () => {
-  const { organization, setOrganization } = React.useContext(OrgContext);
-  const [orgSearch, setOrgSearch] = React.useState(organization);
+interface Props {
+  orgSearch: string;
+  setOrgSearch: React.Dispatch<React.SetStateAction<string>>;
+  setOrganization: React.Dispatch<React.SetStateAction<string>>;
+}
 
+export const SearchOrganization: React.FC<Props> = ({
+  orgSearch,
+  setOrgSearch,
+  setOrganization,
+}) => {
   return (
     <>
       <input
