@@ -1,11 +1,12 @@
 import React from "react";
 import { AuthContext } from "./login.provider";
+import css from "./login.styles.module.css";
 
 export const LoginComponent: React.FC = () => {
   const { user, handleChangeUser, validateUser } =
     React.useContext(AuthContext);
   return (
-    <>
+    <div className={css.container}>
       <h2>Login</h2>
       <div>
         <div>
@@ -27,6 +28,6 @@ export const LoginComponent: React.FC = () => {
       </div>
 
       <button onClick={validateUser}>Login</button>
-    </>
+    </div>
   );
 };
