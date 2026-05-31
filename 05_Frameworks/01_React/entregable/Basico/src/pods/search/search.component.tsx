@@ -1,4 +1,6 @@
+import { Button, IconButton } from "@mui/material";
 import React from "react";
+import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 
 interface Props {
   orgSearch: string;
@@ -6,7 +8,7 @@ interface Props {
   setOrganization: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export const SearchOrganization: React.FC<Props> = ({
+export const Search: React.FC<Props> = ({
   orgSearch,
   setOrgSearch,
   setOrganization,
@@ -20,13 +22,13 @@ export const SearchOrganization: React.FC<Props> = ({
           setOrgSearch(e.target.value);
         }}
       />
-      <button
-        onClick={() => {
-          setOrganization(orgSearch);
-        }}
-      >
-        Search
-      </button>
+      <IconButton>
+        <SearchOutlinedIcon
+          onClick={() => {
+            setOrganization(orgSearch);
+          }}
+        />
+      </IconButton>
     </>
   );
 };

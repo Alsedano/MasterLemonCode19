@@ -1,9 +1,17 @@
 import React, { PropsWithChildren } from "react";
 
-/* interface Props {
+interface Props {
   header: React.ReactNode;
-} */
+}
 
-export const AppLayout: React.FC<PropsWithChildren> = ({ children }) => {
-  return <div className="">{children}</div>;
+export const AppLayout: React.FC<PropsWithChildren<Props>> = ({
+  children,
+  header,
+}) => {
+  return (
+    <div>
+      <div>{header}</div>
+      <main>{children}</main>
+    </div>
+  );
 };

@@ -1,16 +1,19 @@
 body {
   margin: 0px;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgb(215, 237, 245);
 }
 
 .layout-center {
-  background-color: blue;
   display: grid;
   grid-template-columns: 1fr;
   align-items: center;
   justify-items: center;
+  height: 100%;
 }
 
-.layout-app-container {
+/* .layout-app-container {
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 50px 1fr;
@@ -23,4 +26,4 @@ body {
   align-items: center;
   justify-content: flex-end;
   padding-right: 5px;
-}
+} */

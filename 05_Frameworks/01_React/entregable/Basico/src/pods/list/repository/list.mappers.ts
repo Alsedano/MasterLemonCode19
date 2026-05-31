@@ -1,5 +1,5 @@
 import * as am from "./api/api.model";
-import * as vm from "./list.vm";
+import * as vm from "../list.vm";
 
 export const mapMemberEntityToVm = (member: am.MemberEntity): vm.MemberEntity => {
     return {

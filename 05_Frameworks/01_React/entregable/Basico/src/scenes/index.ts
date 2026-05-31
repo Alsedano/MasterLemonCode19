@@ -1,2 +1,2 @@
 export * from "./list.scene";
-export * from "./detail";
+export * from "./detail.scene";

@@ -1,11 +1,5 @@
 import React from "react";
-import { LoginComponent } from "./login.component";
 import { LoginScene } from "@/scenes/login.scene";
-
-interface User {
-  name: string;
-  password: string;
-}
 
 interface AuthContextModel {
   user: User;
