@@ -2,23 +2,27 @@ import { generatePath } from "react-router-dom";
 
 interface SwitchRoutes {
     root: string,
-    listGitHub: string,
-    listRickMorty: string,
-    detail: string
+    list: string,
+    detail: string;
+    detailRM: string
 }
 
-interface Routes extends Omit<SwitchRoutes, "detail"> {
-    detail: (id: string) => string;
+interface Routes extends Omit<SwitchRoutes, "list" | "detail" | "detailRM"> {
+    list: (characters: string) => string;
+    detail: (characters: string, id: string) => string;
+    detailRM: (id: string) => string;
 }
 
 export const switchRoutes: SwitchRoutes = {
     root: "/",
-    listGitHub: "/list/GitHub",
-    listRickMorty: "/list/RickMorty",
-    detail: "/detail/:id"
+    list: "/list/:characters",
+    detail: "/detail/:characters/:id",
+    detailRM: "/detail/:id"
 }
 
 export const routes: Routes = {
     ...switchRoutes,
-    detail: (id: string) => generatePath(switchRoutes.detail, { id })
+    list: (characters: string) => generatePath(switchRoutes.list, { characters }),
+    detail: (characters: string, id: string) => generatePath(switchRoutes.detail, { characters, id }),
+    detailRM: (id: string) => generatePath(switchRoutes.detailRM, { id }),
 }

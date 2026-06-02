@@ -5,23 +5,23 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import { switchRoutes } from "./routes";
+import { routes, switchRoutes } from "./routes";
 import { DetailScene, ListScene } from "@/scenes";
+import { GITHUB } from "@/common/constants";
+import { DetailRickMortyScene } from "@/scenes/detail.sceneRM";
 
-export const AppRouter2: React.FC = () => {
+export const SceneRouter: React.FC = () => {
   return (
     <Router>
       <Routes>
-        <Route
-          path={switchRoutes.listGitHub}
-          element={<ListScene showRickMortyMembers={false} />}
-        />
+        <Route path={switchRoutes.list} element={<ListScene />} />
         <Route path={switchRoutes.detail} element={<DetailScene />} />
         <Route
-          path={switchRoutes.listRickMorty}
-          element={<ListScene showRickMortyMembers={true} />}
+          path={switchRoutes.detailRM}
+          element={<DetailRickMortyScene />}
         />
-        <Route path="*" element={<Navigate to={switchRoutes.listGitHub} />} />
+        <Route path={switchRoutes.list} element={<ListScene />} />
+        <Route path="*" element={<Navigate to={routes.list(GITHUB)} />} />
       </Routes>
     </Router>
   );

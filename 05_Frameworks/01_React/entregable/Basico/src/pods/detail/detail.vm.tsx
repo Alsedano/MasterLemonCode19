@@ -7,6 +7,12 @@ export interface MemberDetailEntity {
   avatarUrl: string;
 }
 
+export interface ExtendedMemberDetailEntity extends MemberDetailEntity {
+  status: string;
+  species: string;
+  gender: string;
+}
+
 export const createDefaultMemberDetail = () => ({
   id: 0,
   login: "",

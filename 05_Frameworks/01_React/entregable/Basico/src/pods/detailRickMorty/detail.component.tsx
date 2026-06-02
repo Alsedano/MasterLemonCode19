@@ -1,18 +1,17 @@
 import { routes } from "@/router";
 import React from "react";
-import { MemberDetailEntity } from "./detail.vm";
 import { Box, Button, Card, CardMedia, Grid } from "@mui/material";
 import { Link as RouterLink } from "react-router";
 import ReplyOutlinedIcon from "@mui/icons-material/ReplyOutlined";
-import { GITHUB } from "@/common/constants";
+import { RICK_MORTY } from "@/common/constants";
+import { RickMortyMemberDetailEntity } from "./detail.vm";
 
 interface Props {
   id: string;
-  characters: string;
-  member: MemberDetailEntity;
+  member: RickMortyMemberDetailEntity;
 }
 
-export const Detail: React.FC<Props> = ({ id, characters, member }) => {
+export const DetailRickMorty: React.FC<Props> = ({ id, member }) => {
   return (
     <>
       <Box
@@ -30,9 +29,9 @@ export const Detail: React.FC<Props> = ({ id, characters, member }) => {
         >
           <CardMedia
             component="img"
-            height="340"
-            width="500"
-            src={member.avatarUrl || null}
+            /*   height="340"*/
+            /* width="200px" */
+            src={member.image || null}
             sx={{
               objectFit: "contain",
             }}
@@ -49,12 +48,7 @@ export const Detail: React.FC<Props> = ({ id, characters, member }) => {
             <Grid size={8}>
               <h2> {member?.name}</h2>
             </Grid>
-            <Grid size={4}>
-              <p>User Id:</p>
-            </Grid>
-            <Grid size={8}>
-              <p>{id}</p>
-            </Grid>
+
             <Grid size={4}>
               <p> id:</p>
             </Grid>
@@ -62,28 +56,28 @@ export const Detail: React.FC<Props> = ({ id, characters, member }) => {
               <p> {member?.id}</p>
             </Grid>
             <Grid size={4}>
-              <p> login:</p>
+              <p> gender:</p>
             </Grid>
             <Grid size={8}>
-              <p> {member?.login}</p>
+              <p> {member?.gender}</p>
             </Grid>
             <Grid size={4}>
-              <p> company:</p>
+              <p> species:</p>
             </Grid>
             <Grid size={8}>
-              <p> {member?.company}</p>
+              <p> {member?.species}</p>
             </Grid>
             <Grid size={4}>
-              <p> bio:</p>
+              <p> status:</p>
             </Grid>
             <Grid size={8}>
-              <p> {member?.bio}</p>
+              <p> {member?.status}</p>
             </Grid>
           </Grid>
 
           <Button
             component={RouterLink}
-            to={routes.list(characters)}
+            to={routes.list(RICK_MORTY)}
             startIcon={<ReplyOutlinedIcon />}
           >
             Back to list page
