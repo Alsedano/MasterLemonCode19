@@ -11,7 +11,7 @@ export const DetailContainer: React.FC = () => {
   const { id } = useParams();
 
   React.useEffect(() => {
-    getMember(id).then(setMember);
+    getMember("", id).then(setMember);
   }, [id]);
 
   return (

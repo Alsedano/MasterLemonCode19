@@ -81,7 +81,7 @@ export const Detail: React.FC<Props> = ({ id, member }) => {
 
           <Button
             component={RouterLink}
-            to={routes.list}
+            to={routes.listGitHub}
             startIcon={<ReplyOutlinedIcon />}
           >
             Back to list page

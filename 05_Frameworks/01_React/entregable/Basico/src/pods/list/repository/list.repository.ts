@@ -1,5 +1,8 @@
-import { mapMembersEntityToVm } from "./list.mappers";
+import { mapGitHubMembersEntityToVm, mapRickMortyMembersEntityToVm } from "./list.mappers";
 import * as api from "./api/api";
 
-export const getMembers = async (organization: string) =>
-  api.getMembers(organization).then(mapMembersEntityToVm);
+export const getGitHubMembers = async (organization: string) =>
+  api.getGitHubMembers(organization).then(mapGitHubMembersEntityToVm);
+
+export const getRickMortyMembers = async () =>
+  api.getRickMortyMembers().then(mapRickMortyMembersEntityToVm);

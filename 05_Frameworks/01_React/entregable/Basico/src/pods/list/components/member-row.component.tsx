@@ -10,7 +10,7 @@ interface Props {
 export const MemberRow: React.FC<Props> = ({ member }) => {
   return (
     <React.Fragment>
-      <img src={member.avatar_url} />
+      <img src={member.avatarUrl} />
       <span>{member.id}</span>
       <Link to={routes.detail(member.login)}>{member.login}</Link>
     </React.Fragment>

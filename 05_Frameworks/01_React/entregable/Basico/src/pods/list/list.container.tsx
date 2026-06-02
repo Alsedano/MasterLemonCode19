@@ -2,15 +2,26 @@ import React from "react";
 import { MemberEntity } from "./list.vm";
 import { List } from "./list.component";
 import { OrgContext } from "../search/search.provider";
-import { getMembers } from "./repository";
+import { getGitHubMembers, getRickMortyMembers } from "./repository";
+import { Error404 } from "../error404/error404.component";
 
-export const ListContainer: React.FC = () => {
+interface Props {
+  showRickMortyMembers: boolean;
+}
+
+export const ListContainer: React.FC<Props> = ({ showRickMortyMembers }) => {
   const [members, setMembers] = React.useState<MemberEntity[]>([]);
   const { organization } = React.useContext(OrgContext);
 
-  React.useEffect(() => {
-    getMembers(organization).then(setMembers);
-  }, [organization]);
+  console.log(`organization value: ${organization}`);
+  console.log(`showRickMortyMembers value: ${showRickMortyMembers}`);
 
-  return <List members={members}></List>;
+  React.useEffect(() => {
+    if (showRickMortyMembers) {
+      getRickMortyMembers().then(setMembers);
+    } else getGitHubMembers(organization).then(setMembers);
+  }, [organization, showRickMortyMembers]);
+
+  if (members.length == 0) return <Error404 />;
+  return <List members={members} />;
 };

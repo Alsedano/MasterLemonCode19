@@ -3,13 +3,24 @@ import { AppLayout } from "@/layouts";
 import { ListContainer } from "@/pods/list";
 import { Header } from "../pods/header/header.component";
 import { SearchContainer } from "@/pods/search";
+import { HeaderButtons } from "@/pods/header/components/headerButtons.component";
 
-export const ListScene: React.FC = () => {
+interface Props {
+  showRickMortyMembers: boolean;
+}
+
+export const ListScene: React.FC<Props> = ({ showRickMortyMembers }) => {
   return (
     <AppLayout
-      header={<Header title="List of members" search={<SearchContainer />} />}
+      header={
+        <Header
+          title={<></>}
+          navButtons={<HeaderButtons />}
+          search={showRickMortyMembers ? <></> : <SearchContainer />}
+        />
+      }
     >
-      <ListContainer />
+      <ListContainer showRickMortyMembers={showRickMortyMembers} />
     </AppLayout>
   );
 };

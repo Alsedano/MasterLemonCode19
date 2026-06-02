@@ -1,13 +1,16 @@
 import React from "react";
 import { UserContainer } from "../user/user.container";
-import { Box } from "@mui/material";
+import { Box, Button } from "@mui/material";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import { HeaderButtons } from "./components/headerButtons.component";
 
 interface Props {
-  title: string;
+  title: React.ReactNode;
+  navButtons: React.ReactNode;
   search: React.ReactNode;
 }
 
-export const Header: React.FC<Props> = ({ title, search }) => {
+export const Header: React.FC<Props> = ({ title, navButtons, search }) => {
   return (
     <>
       <Box
@@ -15,12 +18,11 @@ export const Header: React.FC<Props> = ({ title, search }) => {
           display: "flex",
           flexDirection: "row",
           justifyContent: "space-between",
-          bgcolor: "#1976d2",
+          bgcolor: "deepskyblue",
         }}
       >
-        <Box>
-          <h2>{title}</h2>
-        </Box>
+        {navButtons}
+        {title}
         <Box
           sx={{
             display: "flex",

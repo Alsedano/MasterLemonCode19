@@ -1,5 +1,5 @@
 
-export interface MemberEntity {
+export interface GitHubMemberEntity {
     login: string
     id: number
     node_id: string
@@ -19,4 +19,20 @@ export interface MemberEntity {
     type: string
     user_view_type: string
     site_admin: boolean
+}
+
+export interface RickMortyMemberRoot {
+    results: RickMortyMemberEntity[]
+}
+export interface RickMortyMemberEntity {
+    id: number
+    name: string
+    status: string
+    species: string
+    type: string
+    gender: string
+    image: string
+    episode: string[]
+    url: string
+    created: string
 }

@@ -12,9 +12,16 @@ export const AppRouter2: React.FC = () => {
   return (
     <Router>
       <Routes>
-        <Route path={switchRoutes.list} element={<ListScene />} />
+        <Route
+          path={switchRoutes.listGitHub}
+          element={<ListScene showRickMortyMembers={false} />}
+        />
         <Route path={switchRoutes.detail} element={<DetailScene />} />
-        <Route path="*" element={<Navigate to={switchRoutes.list} />} />
+        <Route
+          path={switchRoutes.listRickMorty}
+          element={<ListScene showRickMortyMembers={true} />}
+        />
+        <Route path="*" element={<Navigate to={switchRoutes.listGitHub} />} />
       </Routes>
     </Router>
   );
