@@ -9,20 +9,20 @@ interface SwitchRoutes {
 
 interface Routes extends Omit<SwitchRoutes, "list" | "detail" | "detailRM"> {
     list: (characters: string) => string;
-    detail: (characters: string, id: string) => string;
+    detail: (id: string) => string;
     detailRM: (id: string) => string;
 }
 
 export const switchRoutes: SwitchRoutes = {
     root: "/",
     list: "/list/:characters",
-    detail: "/detail/:characters/:id",
-    detailRM: "/detail/:id"
+    detail: "/detail/:login",
+    detailRM: "/detailRM/:id"
 }
 
 export const routes: Routes = {
     ...switchRoutes,
     list: (characters: string) => generatePath(switchRoutes.list, { characters }),
-    detail: (characters: string, id: string) => generatePath(switchRoutes.detail, { characters, id }),
+    detail: (login: string) => generatePath(switchRoutes.detail, { login }),
     detailRM: (id: string) => generatePath(switchRoutes.detailRM, { id }),
 }

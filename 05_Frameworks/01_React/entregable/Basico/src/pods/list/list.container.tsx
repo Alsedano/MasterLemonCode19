@@ -12,8 +12,6 @@ export const ListContainer: React.FC = () => {
   const [members, setMembers] = React.useState<MemberEntity[]>([]);
   const { organization } = React.useContext(OrgContext);
 
-  console.log(`showRickMortyMembers value: ${characters}`);
-
   React.useEffect(() => {
     if (characters == RICK_MORTY) {
       getRickMortyMembers().then(setMembers);

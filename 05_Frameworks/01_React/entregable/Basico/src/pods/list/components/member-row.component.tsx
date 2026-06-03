@@ -15,12 +15,12 @@ export const MemberRow: React.FC<Props> = ({ member }) => {
 
   return (
     <React.Fragment>
-      <img src={member.avatarUrl} />
+      <img src={member.avatarUrl} style={{ borderRadius: "50px" }} />
       <span style={{ textAlign: "center" }}>{member.id}</span>
       <Link
         to={
           characters === GITHUB
-            ? routes.detail(characters ?? "", member.login)
+            ? routes.detail(member.login)
             : routes.detailRM(member.id.toString())
         }
       >

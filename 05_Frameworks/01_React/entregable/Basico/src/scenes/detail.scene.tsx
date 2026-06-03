@@ -11,7 +11,7 @@ export const DetailScene: React.FC = () => {
         <HeaderContainer
           title={
             <>
-              <h2>Details</h2>
+              <h2 className="detailTitle">Details</h2>
             </>
           }
           navButtons={<></>}

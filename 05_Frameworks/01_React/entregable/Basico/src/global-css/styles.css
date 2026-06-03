@@ -17,6 +17,10 @@ body {
   align-items: center;
 }
 
+.detailTitle {
+   margin: 0;
+}
+
 .layout-center {
   display: grid;
   grid-template-columns: 1fr;

@@ -8,7 +8,7 @@ export const DetailRickMortyScene: React.FC = () => {
     <AppLayout
       header={
         <HeaderContainer
-          title={<h2>Details</h2>}
+          title={<h2 className="detailTitle">Details</h2>}
           navButtons={<></>}
           search={<></>}
         />
