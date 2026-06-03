@@ -5,11 +5,7 @@ import { OrganizationProvider } from "./pods/search/search.provider";
 import "@/global-css/styles.css";
 
 export const App = () => {
-  return (
-    <AuthProvider>
-      <AppRouter />
-    </AuthProvider>
-  );
+  return <AppRouter />;
 };
 
 export const AppRouter: React.FC = () => {

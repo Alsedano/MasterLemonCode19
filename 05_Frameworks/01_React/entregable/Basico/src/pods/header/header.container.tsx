@@ -2,7 +2,7 @@ import React from "react";
 import { Header } from "./header.component";
 
 interface Props {
-  title: string;
+  title: React.ReactNode;
   navButtons: React.ReactNode;
   search: React.ReactNode;
 }

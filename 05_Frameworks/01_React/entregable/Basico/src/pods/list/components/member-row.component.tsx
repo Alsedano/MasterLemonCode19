@@ -16,7 +16,7 @@ export const MemberRow: React.FC<Props> = ({ member }) => {
   return (
     <React.Fragment>
       <img src={member.avatarUrl} />
-      <span>{member.id}</span>
+      <span style={{ textAlign: "center" }}>{member.id}</span>
       <Link
         to={
           characters === GITHUB

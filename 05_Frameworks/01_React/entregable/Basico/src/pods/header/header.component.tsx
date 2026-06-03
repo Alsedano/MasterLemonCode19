@@ -19,6 +19,8 @@ export const Header: React.FC<Props> = ({ title, navButtons, search }) => {
           flexDirection: "row",
           justifyContent: "space-between",
           bgcolor: "deepskyblue",
+          height: "30px",
+          padding: "10px",
         }}
       >
         {navButtons}

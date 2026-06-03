@@ -8,21 +8,15 @@ export const DetailContainer: React.FC = () => {
   const [member, setMember] = React.useState<MemberDetailEntity>(
     createDefaultMemberDetail(),
   );
-  const { characters, id } = useParams();
-
-  console.log(`characters value: ${characters}`);
+  const { id } = useParams();
 
   React.useEffect(() => {
-    getMember(characters ?? "", id ?? "").then(setMember);
+    getMember(id).then(setMember);
   }, [id]);
 
   return (
     <>
-      <Detail
-        id={id ?? ""}
-        characters={characters ?? ""}
-        member={member}
-      ></Detail>
+      <Detail id={id ?? ""} member={member}></Detail>
     </>
   );
 };

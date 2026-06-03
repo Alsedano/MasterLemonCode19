@@ -29,8 +29,7 @@ export const DetailRickMorty: React.FC<Props> = ({ id, member }) => {
         >
           <CardMedia
             component="img"
-            /*   height="340"*/
-            /* width="200px" */
+            height="340"
             src={member.image || null}
             sx={{
               objectFit: "contain",

@@ -8,11 +8,10 @@ import { GITHUB } from "@/common/constants";
 
 interface Props {
   id: string;
-  characters: string;
   member: MemberDetailEntity;
 }
 
-export const Detail: React.FC<Props> = ({ id, characters, member }) => {
+export const Detail: React.FC<Props> = ({ id, member }) => {
   return (
     <>
       <Box
@@ -31,7 +30,6 @@ export const Detail: React.FC<Props> = ({ id, characters, member }) => {
           <CardMedia
             component="img"
             height="340"
-            width="500"
             src={member.avatarUrl || null}
             sx={{
               objectFit: "contain",
@@ -83,7 +81,7 @@ export const Detail: React.FC<Props> = ({ id, characters, member }) => {
 
           <Button
             component={RouterLink}
-            to={routes.list(characters)}
+            to={routes.list(GITHUB)}
             startIcon={<ReplyOutlinedIcon />}
           >
             Back to list page

@@ -2,7 +2,6 @@ import React from "react";
 import { MemberEntity } from "./list.vm";
 import { MemberRow } from "./components/member-row.component";
 import { TitleList } from "./components/title-list.component";
-import { Error404 } from "../error404";
 
 interface Props {
   members: MemberEntity[];
