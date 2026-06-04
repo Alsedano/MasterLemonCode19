@@ -34,7 +34,7 @@ export const HeaderButtons: React.FC = () => {
           }
           sx={{ color: "black" }}
           component={RouterLink}
-          to={routes.list("RickMorty")}
+          to={routes.listRM}
         >
           Members
         </Button>

@@ -13,14 +13,8 @@ export const ListContainer: React.FC = () => {
   const { organization } = React.useContext(OrgContext);
 
   React.useEffect(() => {
-    if (characters == RICK_MORTY) {
-      getRickMortyMembers().then(setMembers);
-    } else getGitHubMembers(organization).then(setMembers);
+    getGitHubMembers(organization).then(setMembers);
   }, [organization, characters]);
-
-  if (characters == RICK_MORTY) {
-    return <List members={members} />;
-  }
 
   if (members.length == 0) return <Error404 />;
 
