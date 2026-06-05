@@ -1,14 +1,13 @@
-import React, { Dispatch, SetStateAction } from "react";
+import React from "react";
 import { MemberEntity } from "./list.vm";
-import { MemberRow } from "./components/member-row.component";
-import { TitleList } from "./components/title-list.component";
 import { Avatar, Box } from "@mui/material";
 import { DataGrid, GridColDef, GridRenderCellParams } from "@mui/x-data-grid";
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { routes } from "@/router";
 
 interface Props {
   members: MemberEntity[];
+  loading: boolean;
   paginationModel?: { pageSize: number; page: number };
   setPaginationModel?: React.Dispatch<
     React.SetStateAction<{
@@ -38,24 +37,17 @@ const columns: GridColDef[] = [
   },
 ];
 
-export const List: React.FC<Props> = ({ members }) => {
+export const List: React.FC<Props> = ({ members, loading }) => {
   const rowCount = members.length;
 
   return (
     <>
-      {/* <div className="list-user-list-container">
-        <TitleList />
-
-        {members.map((member) => (
-          <MemberRow key={member.id} member={member}></MemberRow>
-        ))}
-      </div> */}
-
       <Box sx={{ height: "100%", width: "80%" }}>
         <DataGrid
           rows={members}
           columns={columns}
           rowCount={rowCount}
+          loading={loading}
           initialState={{
             pagination: {
               paginationModel: {
@@ -64,7 +56,6 @@ export const List: React.FC<Props> = ({ members }) => {
             },
           }}
           pageSizeOptions={[10]}
-          paginationMode="server"
           disableRowSelectionOnClick
         />
       </Box>

@@ -8,6 +8,8 @@ import { GITHUB } from "@/common/constants";
 
 interface Props {
   members: MemberEntity[];
+  membersCount: number;
+  loading: boolean;
   paginationModel?: { pageSize: number; page: number };
   setPaginationModel?: React.Dispatch<
     React.SetStateAction<{
@@ -40,35 +42,23 @@ const columns: GridColDef[] = [
 
 export const ListRM: React.FC<Props> = ({
   members,
+  membersCount,
+  loading,
   paginationModel,
   setPaginationModel,
 }) => {
-  /* const [paginationModel, setPaginationModel] = React.useState({
-    pageSize: 10,
-    page: 0,
-  }); */
-
-  const rowCount = members.length; //members.length;
-
   return (
     <>
-      {/* <div className="list-user-list-container">
-        <TitleList />
-
-        {members.map((member) => (
-          <MemberRow key={member.id} member={member}></MemberRow>
-        ))}
-      </div> */}
-
       <Box sx={{ height: "100%", width: "80%" }}>
         <DataGrid
+          rowCount={membersCount}
           rows={members}
           columns={columns}
-          rowCount={rowCount}
+          loading={loading}
           paginationModel={paginationModel}
           onPaginationModelChange={setPaginationModel}
           pageSizeOptions={[10]}
-          //paginationMode="server"
+          paginationMode="server"
           disableRowSelectionOnClick
         />
       </Box>

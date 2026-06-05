@@ -1,29 +1,39 @@
 import React from "react";
-import { MemberEntity } from "./list.vm";
+import { MemberEntity, MemberRoot } from "./list.vm";
 import { ListRM } from "./list.component";
 import { OrgContext } from "../search/search.provider";
 import { getRickMortyMembers } from "./repository";
-import { Error404 } from "../error404/error404.component";
 import { useParams } from "react-router-dom";
+import { useDebounce } from "@/hooks/debounce.hook";
 
 export const ListRickMortyContainer: React.FC = () => {
-  const [members, setMembers] = React.useState<MemberEntity[]>([]);
+  const [memberRoot, setMemberRoot] = React.useState<MemberRoot>();
+  const [error, setError] = React.useState(null);
+  const [loading, setLoading] = React.useState(true);
+
+  const members = memberRoot?.members ?? [];
 
   const [paginationModel, setPaginationModel] = React.useState({
     pageSize: 10,
     page: 0,
   });
 
-  React.useEffect(() => {
-    getRickMortyMembers(paginationModel.page, paginationModel.pageSize).then(
-      setMembers,
-    );
-  }, [paginationModel]);
+  const { debouncedPaginationModel } = useDebounce(paginationModel, 500);
 
-  if (members.length == 0) return <Error404 />;
+  React.useEffect(() => {
+    getRickMortyMembers(paginationModel.page, paginationModel.pageSize)
+      .then(setMemberRoot)
+      .catch(setError)
+      .finally(() => setLoading(false));
+  }, debouncedPaginationModel);
+
+  if (error) throw error;
+
   return (
     <ListRM
       members={members}
+      membersCount={memberRoot?.totalCount ?? members.length}
+      loading={loading}
       paginationModel={paginationModel}
       setPaginationModel={setPaginationModel}
     />

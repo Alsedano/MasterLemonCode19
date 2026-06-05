@@ -2,21 +2,24 @@ import React from "react";
 import { MemberEntity } from "./list.vm";
 import { List } from "./list.component";
 import { OrgContext } from "../search/search.provider";
-import { getGitHubMembers, getRickMortyMembers } from "./repository";
-import { Error404 } from "../error404/error404.component";
+import { getGitHubMembers } from "./repository";
 import { useParams } from "react-router-dom";
-import { RICK_MORTY } from "@/common/constants";
 
 export const ListContainer: React.FC = () => {
   const { characters } = useParams();
   const [members, setMembers] = React.useState<MemberEntity[]>([]);
   const { organization } = React.useContext(OrgContext);
+  const [error, setError] = React.useState(null);
+  const [loading, setLoading] = React.useState(true);
 
   React.useEffect(() => {
-    getGitHubMembers(organization).then(setMembers);
+    getGitHubMembers(organization)
+      .then(setMembers)
+      .catch(setError)
+      .finally(() => setLoading(false));
   }, [organization, characters]);
 
-  if (members.length == 0) return <Error404 />;
+  if (error) throw error;
 
-  return <List members={members} />;
+  return <List members={members} loading={loading} />;
 };

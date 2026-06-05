@@ -1,11 +1,9 @@
 import React from "react";
 import { AppLayout } from "@/layouts";
-import { SearchContainer } from "@/pods/search";
 import { HeaderButtons } from "@/pods/header/components/headerButtons.component";
-import { useParams } from "react-router-dom";
-import { RICK_MORTY } from "@/common/constants";
 import { HeaderContainer } from "@/pods/header";
 import { ListRickMortyContainer } from "@/pods/listRickMorty";
+import { ErrorBoundary } from "@/pods/error404";
 
 export const ListRickMortyScene: React.FC = () => {
   return (
@@ -18,7 +16,9 @@ export const ListRickMortyScene: React.FC = () => {
         />
       }
     >
-      <ListRickMortyContainer />
+      <ErrorBoundary>
+        <ListRickMortyContainer />
+      </ErrorBoundary>
     </AppLayout>
   );
 };
