@@ -1,4 +1,4 @@
-import { RickMortyMemberEntity, RickMortyMemberRoot } from "./api.model"
+import { RickMortyMemberRoot } from "./api.model"
 
 export const getRickMortyMembers = async (page: number): Promise<RickMortyMemberRoot> => {
 

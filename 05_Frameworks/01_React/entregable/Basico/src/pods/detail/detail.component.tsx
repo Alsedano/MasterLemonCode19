@@ -30,7 +30,7 @@ export const Detail: React.FC<Props> = ({ id, member }) => {
           <CardMedia
             component="img"
             height="340"
-            src={member.avatarUrl || null}
+            src={member.avatarUrl || ""}
             sx={{
               objectFit: "contain",
             }}

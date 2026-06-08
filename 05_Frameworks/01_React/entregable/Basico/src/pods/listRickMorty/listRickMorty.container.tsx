@@ -1,10 +1,8 @@
 import React from "react";
-import { MemberEntity, MemberRoot } from "./list.vm";
 import { ListRM } from "./list.component";
-import { OrgContext } from "../search/search.provider";
 import { getRickMortyMembers } from "./repository";
-import { useParams } from "react-router-dom";
 import { useDebounce } from "@/hooks/debounce.hook";
+import { MemberRoot } from "./list.vm";
 
 export const ListRickMortyContainer: React.FC = () => {
   const [memberRoot, setMemberRoot] = React.useState<MemberRoot>();
@@ -18,14 +16,16 @@ export const ListRickMortyContainer: React.FC = () => {
     page: 0,
   });
 
-  const { debouncedPaginationModel } = useDebounce(paginationModel, 500);
+  const debouncedPaginationModel = useDebounce(paginationModel, 500);
 
   React.useEffect(() => {
-    getRickMortyMembers(paginationModel.page, paginationModel.pageSize)
+    getRickMortyMembers(paginationModel.page)
       .then(setMemberRoot)
       .catch(setError)
       .finally(() => setLoading(false));
-  }, debouncedPaginationModel);
+  }, [debouncedPaginationModel.page]);
+
+  console.log(`Se renderiza componente con page: ${paginationModel.page}`);
 
   if (error) throw error;
 

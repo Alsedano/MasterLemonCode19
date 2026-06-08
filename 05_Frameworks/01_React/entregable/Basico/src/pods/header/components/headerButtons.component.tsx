@@ -1,4 +1,4 @@
-import { Box, Button, Icon, SvgIcon } from "@mui/material";
+import { Box, Button } from "@mui/material";
 import React from "react";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import rickSvgUrl from "./resources/rick.svg";

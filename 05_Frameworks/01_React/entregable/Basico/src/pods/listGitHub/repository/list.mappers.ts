@@ -14,17 +14,3 @@ export const mapGitHubMembersEntityToVm = (members: am.GitHubMemberEntity[]): vm
         members.map(m => mapGitHubMemberEntityToVm(m))
     )
 }
-
-export const mapRickMortyMemberEntityToVm = (member: am.RickMortyMemberEntity): vm.MemberEntity => {
-    return {
-        id: member.id,
-        login: member.name,
-        avatarUrl: member.image
-    }
-}
-
-export const mapRickMortyMembersEntityToVm = (members: am.RickMortyMemberRoot): vm.MemberEntity[] => {
-    return (
-        members.results.map(m => mapRickMortyMemberEntityToVm(m))
-    )
-}

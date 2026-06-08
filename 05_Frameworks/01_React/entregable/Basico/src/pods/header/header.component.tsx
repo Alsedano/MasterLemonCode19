@@ -1,8 +1,6 @@
 import React from "react";
 import { UserContainer } from "../user/user.container";
-import { Box, Button } from "@mui/material";
-import GitHubIcon from "@mui/icons-material/GitHub";
-import { HeaderButtons } from "./components/headerButtons.component";
+import { Box } from "@mui/material";
 
 interface Props {
   title: React.ReactNode;

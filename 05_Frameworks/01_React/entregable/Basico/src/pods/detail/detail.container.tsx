@@ -11,7 +11,7 @@ export const DetailContainer: React.FC = () => {
   const { login } = useParams();
 
   React.useEffect(() => {
-    getMember(login).then(setMember);
+    getMember(login!).then(setMember);
   }, [login]);
 
   return (

@@ -3,7 +3,6 @@ import React from "react";
 import { Box, Button, Card, CardMedia, Grid } from "@mui/material";
 import { Link as RouterLink } from "react-router";
 import ReplyOutlinedIcon from "@mui/icons-material/ReplyOutlined";
-import { RICK_MORTY } from "@/common/constants";
 import { RickMortyMemberDetailEntity } from "./detail.vm";
 
 interface Props {
@@ -30,7 +29,7 @@ export const DetailRickMorty: React.FC<Props> = ({ id, member }) => {
           <CardMedia
             component="img"
             height="340"
-            src={member.image || null}
+            src={member.image || ""}
             sx={{
               objectFit: "contain",
             }}
@@ -76,7 +75,7 @@ export const DetailRickMorty: React.FC<Props> = ({ id, member }) => {
 
           <Button
             component={RouterLink}
-            to={routes.list(RICK_MORTY)}
+            to={routes.listRM}
             startIcon={<ReplyOutlinedIcon />}
           >
             Back to list page

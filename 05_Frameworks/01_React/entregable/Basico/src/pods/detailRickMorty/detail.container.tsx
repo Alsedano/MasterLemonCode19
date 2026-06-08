@@ -11,7 +11,7 @@ export const DetailRickMortyContainer: React.FC = () => {
   const [member, setMember] = React.useState<RickMortyMemberDetailEntity>(
     createDefaultRickMortyMemberDetail(),
   );
-  const { characters, id } = useParams();
+  const { id } = useParams();
 
   React.useEffect(() => {
     getMember(id ?? "").then(setMember);

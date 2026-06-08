@@ -1,7 +1,6 @@
 import React from "react";
-import { AppLayout, CenteredLayout } from "@/layouts";
+import { AppLayout } from "@/layouts";
 import { DetailContainer } from "@/pods/detail";
-import { Header } from "@/pods/header/header.component";
 import { HeaderContainer } from "@/pods/header";
 
 export const DetailScene: React.FC = () => {

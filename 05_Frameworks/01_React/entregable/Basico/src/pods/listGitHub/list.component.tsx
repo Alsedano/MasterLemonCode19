@@ -1,7 +1,7 @@
 import React from "react";
 import { MemberEntity } from "./list.vm";
 import { Avatar, Box } from "@mui/material";
-import { DataGrid, GridColDef, GridRenderCellParams } from "@mui/x-data-grid";
+import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import { Link } from "react-router-dom";
 import { routes } from "@/router";
 
@@ -38,15 +38,12 @@ const columns: GridColDef[] = [
 ];
 
 export const List: React.FC<Props> = ({ members, loading }) => {
-  const rowCount = members.length;
-
   return (
     <>
       <Box sx={{ height: "100%", width: "80%" }}>
         <DataGrid
           rows={members}
           columns={columns}
-          rowCount={rowCount}
           loading={loading}
           initialState={{
             pagination: {

@@ -1,8 +1,8 @@
 import React from "react";
-import { AuthProvider } from "@/pods/login/login.provider";
 import { SceneRouter } from "./router";
 import { OrganizationProvider } from "./pods/search/search.provider";
 import "@/global-css/styles.css";
+import { AuthProvider } from "./pods/login/login.provider";
 
 export const App = () => {
   return <AppRouter />;
@@ -10,8 +10,10 @@ export const App = () => {
 
 export const AppRouter: React.FC = () => {
   return (
-    <OrganizationProvider>
-      <SceneRouter />
-    </OrganizationProvider>
+    <AuthProvider>
+      <OrganizationProvider>
+        <SceneRouter />
+      </OrganizationProvider>
+    </AuthProvider>
   );
 };

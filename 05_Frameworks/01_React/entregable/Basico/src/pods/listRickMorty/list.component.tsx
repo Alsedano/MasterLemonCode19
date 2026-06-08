@@ -1,10 +1,9 @@
 import React from "react";
 import { MemberEntity } from "./list.vm";
 import { Avatar, Box } from "@mui/material";
-import { DataGrid, GridColDef, GridRenderCellParams } from "@mui/x-data-grid";
-import { Link, useParams } from "react-router-dom";
+import { DataGrid, GridColDef } from "@mui/x-data-grid";
+import { Link } from "react-router-dom";
 import { routes } from "@/router";
-import { GITHUB } from "@/common/constants";
 
 interface Props {
   members: MemberEntity[];
