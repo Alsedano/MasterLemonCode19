@@ -1,8 +1,9 @@
 import React from "react";
 import { ListRM } from "./list.component";
-import { getRickMortyMembers } from "./repository";
+import { getRickMortyMemberByName, getRickMortyMembers } from "./repository";
 import { useDebounce } from "@/hooks/debounce.hook";
 import { MemberRoot } from "./list.vm";
+import { GridFilterModel } from "@mui/x-data-grid";
 
 export const ListRickMortyContainer: React.FC = () => {
   const [memberRoot, setMemberRoot] = React.useState<MemberRoot>();
@@ -25,7 +26,32 @@ export const ListRickMortyContainer: React.FC = () => {
       .finally(() => setLoading(false));
   }, [debouncedPaginationModel.page]);
 
-  console.log(`Se renderiza componente con page: ${paginationModel.page}`);
+  const [filterModel, setFilterModel] = React.useState<GridFilterModel>({
+    items: [],
+    quickFilterExcludeHiddenColumns: true,
+    quickFilterValues: [],
+  });
+
+  const getRickAndMortyFIlteredByName = (name: string) => {
+    getRickMortyMemberByName(name)
+      .then(setMemberRoot)
+      .catch(setError)
+      .finally(() => setLoading(false));
+  };
+
+  const handleFilterModelChange = React.useCallback(
+    (newModel: GridFilterModel) => {
+      setFilterModel(newModel);
+
+      const quickFilterNameValue = newModel.quickFilterValues?.[0];
+
+      if (quickFilterNameValue) {
+        console.log("Buscando en servidor:", quickFilterNameValue);
+        getRickAndMortyFIlteredByName(quickFilterNameValue);
+      }
+    },
+    [],
+  );
 
   if (error) throw error;
 
@@ -36,6 +62,8 @@ export const ListRickMortyContainer: React.FC = () => {
       loading={loading}
       paginationModel={paginationModel}
       setPaginationModel={setPaginationModel}
+      filterModel={filterModel}
+      handleFilterModelChange={handleFilterModelChange}
     />
   );
 };

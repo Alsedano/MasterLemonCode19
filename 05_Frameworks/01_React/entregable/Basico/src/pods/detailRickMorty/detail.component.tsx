@@ -38,7 +38,7 @@ export const DetailRickMorty: React.FC<Props> = ({ id, member }) => {
             container
             rowSpacing={1}
             columnSpacing={{ xs: 1 }}
-            sx={{ padding: "0px 100px" }}
+            sx={{ padding: "0px 10px" }}
           >
             <Grid size={4}>
               <h2> name:</h2>

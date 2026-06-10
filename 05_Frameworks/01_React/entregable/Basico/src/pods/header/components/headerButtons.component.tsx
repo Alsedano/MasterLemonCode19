@@ -23,7 +23,7 @@ export const HeaderButtons: React.FC = () => {
           startIcon={<GitHubIcon />}
           sx={{ color: "black" }}
           component={RouterLink}
-          to={routes.list("GitHub")}
+          to={routes.list}
         >
           Members
         </Button>

@@ -1,16 +1,9 @@
 import React from "react";
-import { OrgContext } from "./search.provider";
+import { SearchContext } from "./search.provider";
 import { Search } from "./search.component";
 
 export const SearchContainer: React.FC = () => {
-  const { organization, setOrganization } = React.useContext(OrgContext);
-  const [orgSearch, setOrgSearch] = React.useState(organization);
+  const { searchText, setSearchText } = React.useContext(SearchContext);
 
-  return (
-    <Search
-      orgSearch={orgSearch}
-      setOrgSearch={setOrgSearch}
-      setOrganization={setOrganization}
-    />
-  );
+  return <Search textSearch={searchText} setTextSearch={setSearchText} />;
 };

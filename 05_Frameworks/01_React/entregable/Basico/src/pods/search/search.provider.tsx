@@ -1,23 +1,23 @@
 import React, { PropsWithChildren } from "react";
 
-interface OrganizationContextModel {
-  organization: string;
-  setOrganization: React.Dispatch<React.SetStateAction<string>>;
+interface SearchContextModel {
+  searchText: string;
+  setSearchText: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export const OrgContext = React.createContext<OrganizationContextModel>({
-  organization: "",
-  setOrganization: () => {},
+export const SearchContext = React.createContext<SearchContextModel>({
+  searchText: "",
+  setSearchText: () => {},
 });
 
-export const OrganizationProvider: React.FC<PropsWithChildren> = ({
-  children,
-}) => {
-  const [organization, setOrganization] = React.useState("lemoncode");
+export const SearchProvider: React.FC<PropsWithChildren> = ({ children }) => {
+  const [searchText, setSearchText] = React.useState("lemoncode");
 
   return (
-    <OrgContext value={{ organization, setOrganization }}>
+    <SearchContext
+      value={{ searchText: searchText, setSearchText: setSearchText }}
+    >
       {children}
-    </OrgContext>
+    </SearchContext>
   );
 };

@@ -7,7 +7,6 @@ import {
 } from "react-router-dom";
 import { routes, switchRoutes } from "./routes";
 import { DetailScene, ListRickMortyScene, ListScene } from "@/scenes";
-import { GITHUB } from "@/common/constants";
 import { DetailRickMortyScene } from "@/scenes/detailRM.scene";
 
 export const SceneRouter: React.FC = () => {
@@ -21,7 +20,7 @@ export const SceneRouter: React.FC = () => {
           element={<DetailRickMortyScene />}
         />
         <Route path={switchRoutes.listRM} element={<ListRickMortyScene />} />
-        <Route path="*" element={<Navigate to={routes.list(GITHUB)} />} />
+        <Route path="*" element={<Navigate to={routes.list} />} />
       </Routes>
     </Router>
   );

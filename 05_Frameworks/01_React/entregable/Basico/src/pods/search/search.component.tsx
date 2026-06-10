@@ -1,31 +1,22 @@
 import { IconButton } from "@mui/material";
-import React from "react";
+import React, { useRef } from "react";
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 
 interface Props {
-  orgSearch: string;
-  setOrgSearch: React.Dispatch<React.SetStateAction<string>>;
-  setOrganization: React.Dispatch<React.SetStateAction<string>>;
+  textSearch: string;
+  setTextSearch: React.Dispatch<React.SetStateAction<string>>;
 }
 
-export const Search: React.FC<Props> = ({
-  orgSearch,
-  setOrgSearch,
-  setOrganization,
-}) => {
+export const Search: React.FC<Props> = ({ textSearch, setTextSearch }) => {
+  const inputRef = useRef<HTMLInputElement>(null);
+
   return (
     <>
-      <input
-        type="text"
-        value={orgSearch}
-        onChange={(e) => {
-          setOrgSearch(e.target.value);
-        }}
-      />
+      <input ref={inputRef} type="text" defaultValue={textSearch} />
       <IconButton>
         <SearchOutlinedIcon
           onClick={() => {
-            setOrganization(orgSearch);
+            setTextSearch(inputRef.current?.value || "");
           }}
         />
       </IconButton>

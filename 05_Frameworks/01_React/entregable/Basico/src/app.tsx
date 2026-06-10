@@ -1,6 +1,6 @@
 import React from "react";
 import { SceneRouter } from "./router";
-import { OrganizationProvider } from "./pods/search/search.provider";
+import { SearchProvider } from "./pods/search/search.provider";
 import "@/global-css/styles.css";
 import { AuthProvider } from "./pods/login/login.provider";
 
@@ -11,9 +11,9 @@ export const App = () => {
 export const AppRouter: React.FC = () => {
   return (
     <AuthProvider>
-      <OrganizationProvider>
+      <SearchProvider>
         <SceneRouter />
-      </OrganizationProvider>
+      </SearchProvider>
     </AuthProvider>
   );
 };

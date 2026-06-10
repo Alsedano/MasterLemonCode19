@@ -8,3 +8,10 @@ export const getRickMortyMembers = async (page: number) => {
     return mapRickMortyMembersEntityToVm(result);
   });
 }
+
+export const getRickMortyMemberByName = async (name: string) => {
+  return api.getRickMortyMemberByName(name).then(result => {
+
+    return mapRickMortyMembersEntityToVm(result);
+  });
+}

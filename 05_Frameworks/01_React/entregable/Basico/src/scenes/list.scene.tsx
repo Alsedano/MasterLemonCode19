@@ -5,10 +5,10 @@ import { SearchContainer } from "@/pods/search";
 import { HeaderButtons } from "@/pods/header/components/headerButtons.component";
 import { HeaderContainer } from "@/pods/header";
 import { ErrorBoundary } from "@/pods/error404";
-import { OrgContext } from "@/pods/search/search.provider";
+import { SearchContext } from "@/pods/search/search.provider";
 
 export const ListScene: React.FC = () => {
-  const { organization } = React.useContext(OrgContext);
+  const { searchText } = React.useContext(SearchContext);
 
   return (
     <AppLayout
@@ -20,7 +20,7 @@ export const ListScene: React.FC = () => {
         />
       }
     >
-      <ErrorBoundary key={organization}>
+      <ErrorBoundary key={searchText}>
         <ListContainer />
       </ErrorBoundary>
     </AppLayout>

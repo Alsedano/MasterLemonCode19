@@ -23,3 +23,13 @@ export interface RickMortyMemberEntity {
     url: string
     created: string
 }
+
+export const createDefaultRickMortyMemberRoot = (): RickMortyMemberRoot => ({
+  info: {
+    count: 0,
+    pages: 0,
+    next: '',
+    prev: null,
+  },
+  results: [],
+});
