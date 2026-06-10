@@ -8,7 +8,7 @@ export const ListContainer: React.FC = () => {
   const { searchText } = React.useContext(SearchContext);
   const [error, setError] = React.useState(null);
   const [paginationModel, setPaginationModel] = React.useState({
-    pageSize: 10,
+    pageSize: 30,
     page: 0,
   });
 
