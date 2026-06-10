@@ -1,4 +1,14 @@
+export interface GitHubMemberRoot {
+    info: Info,
+    results: GitHubMemberEntity[]
+}
 
+export interface Info {
+    count: number
+    pageSize: number
+    next: string
+    last: any
+}
 export interface GitHubMemberEntity {
     login: string
     id: number

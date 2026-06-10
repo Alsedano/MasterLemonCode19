@@ -9,8 +9,11 @@ export const mapGitHubMemberEntityToVm = (member: am.GitHubMemberEntity): vm.Mem
     }
 }
 
-export const mapGitHubMembersEntityToVm = (members: am.GitHubMemberEntity[]): vm.MemberEntity[] => {
-    return (
-        members.map(m => mapGitHubMemberEntityToVm(m))
-    )
+export const mapGitHubMembersEntityToVm = (memberRoot: am.GitHubMemberRoot): vm.MemberRoot => {
+    const members = memberRoot.results.map(m => mapGitHubMemberEntityToVm(m));
+
+    return {
+        totalCount: memberRoot.info?.count ?? members.length,
+        members: members
+    };
 }

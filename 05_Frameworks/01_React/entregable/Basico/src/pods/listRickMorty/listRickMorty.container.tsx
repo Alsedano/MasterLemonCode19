@@ -62,8 +62,6 @@ export const ListRickMortyContainer: React.FC = () => {
       loading={loading}
       paginationModel={paginationModel}
       setPaginationModel={setPaginationModel}
-      filterModel={filterModel}
-      handleFilterModelChange={handleFilterModelChange}
     />
   );
 };
