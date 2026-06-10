@@ -17,7 +17,7 @@ export const ListContainer: React.FC = () => {
       .then((data) => {
         setPaginationModel((prev) => ({
           ...prev,
-          pageSize: data.totalCount,
+          pageSize: Math.min(data.totalCount, 30), //MUI datagrid free is up to 100
         }));
       })
       .catch(setError);

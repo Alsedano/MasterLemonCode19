@@ -13,7 +13,7 @@ export const ListRickMortyContainer: React.FC = () => {
   const members = memberRoot?.members ?? [];
 
   const [paginationModel, setPaginationModel] = React.useState({
-    pageSize: 10,
+    pageSize: 30,
     page: 0,
   });
 
@@ -21,7 +21,13 @@ export const ListRickMortyContainer: React.FC = () => {
 
   React.useEffect(() => {
     getRickMortyMembers(paginationModel.page)
-      .then(setMemberRoot)
+      .then((data) => {
+        setMemberRoot(data);
+        setPaginationModel((prev) => ({
+          ...prev,
+          pageSize: Math.min(data.totalCount, 30),
+        }));
+      })
       .catch(setError)
       .finally(() => setLoading(false));
   }, [debouncedPaginationModel.page]);
@@ -62,6 +68,7 @@ export const ListRickMortyContainer: React.FC = () => {
       loading={loading}
       paginationModel={paginationModel}
       setPaginationModel={setPaginationModel}
+      handleFilterModelChange={handleFilterModelChange}
     />
   );
 };

@@ -40,6 +40,7 @@ export const List: React.FC<Props> = ({
           columns={columns}
           dataSource={customDataSource}
           pagination
+          pageSizeOptions={[paginationModel.pageSize]}
           initialState={{
             pagination: {
               paginationModel: { pageSize: paginationModel.pageSize, page: 0 },

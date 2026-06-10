@@ -1,7 +1,7 @@
 import React from "react";
 import { MemberEntity } from "./list.vm";
 import { Avatar, Box } from "@mui/material";
-import { DataGrid, GridColDef } from "@mui/x-data-grid";
+import { DataGrid, GridColDef, GridFilterModel } from "@mui/x-data-grid";
 import { Link } from "react-router-dom";
 import { routes } from "@/router";
 
@@ -9,6 +9,7 @@ interface Props {
   members: MemberEntity[];
   membersCount: number;
   loading: boolean;
+  handleFilterModelChange: (newModel: GridFilterModel) => void;
   paginationModel?: { pageSize: number; page: number };
   setPaginationModel?: React.Dispatch<
     React.SetStateAction<{
@@ -42,7 +43,7 @@ const columns: GridColDef[] = [
 export const ListRM: React.FC<Props> = ({
   members,
   membersCount,
-  loading,
+  handleFilterModelChange,
   paginationModel,
   setPaginationModel,
 }) => {
@@ -53,11 +54,12 @@ export const ListRM: React.FC<Props> = ({
           rowCount={membersCount}
           rows={members}
           columns={columns}
-          loading={loading}
           paginationModel={paginationModel}
           onPaginationModelChange={setPaginationModel}
-          pageSizeOptions={[10]}
+          onFilterModelChange={handleFilterModelChange}
           paginationMode="server"
+          pagination
+          pageSizeOptions={[members.length]}
           disableRowSelectionOnClick
         />
       </Box>
