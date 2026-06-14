@@ -1,10 +1,5 @@
 import React, { PropsWithChildren } from "react";
 
-interface SearchContextModel {
-  searchText: string;
-  setSearchText: React.Dispatch<React.SetStateAction<string>>;
-}
-
 export const SearchContext = React.createContext<SearchContextModel>({
   searchText: "",
   setSearchText: () => {},
