@@ -1,0 +1,1 @@
+export const MARGIN_SCENE = "25px";

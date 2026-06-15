@@ -1,0 +1,47 @@
+:root {
+  --margin-app: 25px;
+}
+
+body {
+  margin: 0px;
+  height: 100vh;
+  background-color: rgb(215, 237, 245);
+}
+
+.gridList {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+
+.flexList {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.marginPanel {
+  margin: var(--margin-app);
+}
+
+.width75 {
+  width: 75px;
+}
+
+.paddingBottom {
+  padding-top: 50px;
+}
+
+.flexEnd {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+.gridDiv {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 50px 100% 20px;
+  padding: 10px;
+  gap: 10px;
+}
