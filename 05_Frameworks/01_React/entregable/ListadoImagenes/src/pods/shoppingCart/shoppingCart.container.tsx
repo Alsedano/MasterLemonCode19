@@ -31,5 +31,15 @@ export const ShoppingCartContainer: React.FC = () => {
     setItemIds([...itemIds]);
   };
 
-  return <ShoppingCart items={items} handleDeleteItem={handleDeleteItem} />;
+  const handleDeleteAllItems = () => {
+    setItemIds([]);
+  };
+
+  return (
+    <ShoppingCart
+      items={items}
+      handleDeleteItem={handleDeleteItem}
+      handleDeleteAllItems={handleDeleteAllItems}
+    />
+  );
 };

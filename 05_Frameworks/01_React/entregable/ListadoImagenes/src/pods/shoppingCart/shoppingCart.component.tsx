@@ -3,6 +3,7 @@ import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import {
   Box,
   Collapse,
+  Divider,
   IconButton,
   ListItem,
   ListItemButton,
@@ -15,9 +16,14 @@ import { PictureInfo } from "../list";
 interface Props {
   items: PictureInfo[];
   handleDeleteItem: (id: number) => void;
+  handleDeleteAllItems: () => void;
 }
 
-export const ShoppingCart: React.FC<Props> = ({ items, handleDeleteItem }) => {
+export const ShoppingCart: React.FC<Props> = ({
+  items,
+  handleDeleteItem,
+  handleDeleteAllItems,
+}) => {
   const [open, setOpen] = React.useState(true);
 
   return (
@@ -40,14 +46,6 @@ export const ShoppingCart: React.FC<Props> = ({ items, handleDeleteItem }) => {
               },
         ]}
       >
-        {/*  <div className="shoppingCart">
-          <ShoppingCartIcon></ShoppingCartIcon>
-          <>
-            <Typography variant="body2">Cart</Typography>
-          </>
-        </div>
-        <Box sx={{ height: "90%" }}></Box> */}
-
         <ListItemButton
           alignItems="flex-start"
           sx={[
@@ -62,7 +60,6 @@ export const ShoppingCart: React.FC<Props> = ({ items, handleDeleteItem }) => {
                   justifyContent: "center",
                 },
           ]}
-          /* sx={{ width: "100%" }} */
           onClick={() => setOpen(!open)}
         >
           <ListItem
@@ -130,6 +127,26 @@ export const ShoppingCart: React.FC<Props> = ({ items, handleDeleteItem }) => {
                 />
               </ListItemButton>
             ))}
+          <Divider />
+          <ListItemButton key={999}>
+            <ListItemText
+              primary="Empty cart"
+              slotProps={{
+                primary: { sx: { fontSize: 14, fontWeight: "medium" } },
+              }}
+            />
+            <ListItem
+              secondaryAction={
+                <IconButton
+                  edge="end"
+                  aria-label="delete"
+                  onClick={handleDeleteAllItems}
+                >
+                  <DeleteIcon />
+                </IconButton>
+              }
+            />
+          </ListItemButton>
         </Collapse>
       </Box>
     </>
