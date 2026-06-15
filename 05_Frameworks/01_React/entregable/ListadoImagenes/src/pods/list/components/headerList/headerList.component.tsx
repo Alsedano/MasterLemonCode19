@@ -16,12 +16,6 @@ export const HeaderList: React.FC = () => {
       >
         <Button
           variant="outlined"
-          startIcon={
-            <img
-              src="/resources/home-logo.png"
-              style={{ width: "24px", height: "24px" }}
-            />
-          }
           sx={{ color: "black" }}
           component={RouterLink}
           to={switchRoutes.listKitties}
@@ -30,12 +24,6 @@ export const HeaderList: React.FC = () => {
         </Button>
         <Button
           variant="outlined"
-          startIcon={
-            <img
-              src="/resources/home-logo.png"
-              style={{ width: "24px", height: "24px" }}
-            />
-          }
           sx={{ color: "black" }}
           component={RouterLink}
           to={switchRoutes.listPuppies}

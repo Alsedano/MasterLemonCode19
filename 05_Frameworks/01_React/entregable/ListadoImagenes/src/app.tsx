@@ -1,6 +1,5 @@
 import React from "react";
 import { SceneRouter } from "./router";
-import "@/global-css/styles.css";
 import { ShoppingCartContainer } from "./pods/shoppingCart";
 import { AppLayout } from "./layouts";
 import { ShoppingProvider } from "./core";

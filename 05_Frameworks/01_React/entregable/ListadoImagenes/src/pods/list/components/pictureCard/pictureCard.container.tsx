@@ -1,7 +1,6 @@
-import React, { SyntheticEvent } from "react";
+import React from "react";
 import { PictureCard } from "./pictureCard.component";
 import { PictureInfo } from "@/pods/list";
-import { ShoppingContext } from "@/core";
 
 interface Props {
   picture: PictureInfo;
