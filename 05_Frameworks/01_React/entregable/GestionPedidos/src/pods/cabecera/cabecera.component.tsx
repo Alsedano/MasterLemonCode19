@@ -1,4 +1,4 @@
-import { MARGIN_SCENE } from "@/core/constants";
+import dayjs from "dayjs";
 import {
   Box,
   Button,
@@ -10,10 +10,23 @@ import {
   TextField,
 } from "@mui/material";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-
 import React from "react";
 
-export const Cabecera: React.FC = () => {
+interface Props {
+  orderNumber: number;
+  supplier: string;
+  date: Date;
+  totalOrder: number;
+  status: number;
+}
+
+export const Cabecera: React.FC<Props> = ({
+  orderNumber,
+  supplier,
+  date,
+  totalOrder,
+  status,
+}) => {
   return (
     <>
       <Box
@@ -34,22 +47,48 @@ export const Cabecera: React.FC = () => {
         <Input id={`${simpleId}-input`} defaultValue="Composed TextField" />
       </FormControl> */}
           {/*  <FormControl variant="standard"> */}
-          <TextField id="number" label="Número" sx={{ m: 1, width: "25ch" }} />
+          <TextField
+            id="number"
+            label="Número"
+            value={orderNumber}
+            slotProps={{
+              input: {
+                readOnly: true,
+              },
+            }}
+            sx={{ m: 1, width: "25ch" }}
+          />
           <TextField
             id="provider"
             label="Proveedor"
+            value={supplier}
+            slotProps={{
+              input: {
+                readOnly: true,
+              },
+            }}
             sx={{ m: 1, width: "25ch" }}
           />
-          <DatePicker sx={{ margin: "8px", width: "25ch" }} />
+          <DatePicker
+            readOnly
+            sx={{ margin: "8px", width: "25ch" }}
+            value={dayjs(date)}
+          />
         </div>
         <div>
           <TextField
             id="importeTotal"
             label="Importe Total"
+            value={totalOrder}
+            slotProps={{
+              input: {
+                readOnly: true,
+              },
+            }}
             sx={{ m: 1, width: "25ch" }}
           />
           <FormControlLabel
-            value=""
+            value={status}
             control={
               <TextField
                 slotProps={{

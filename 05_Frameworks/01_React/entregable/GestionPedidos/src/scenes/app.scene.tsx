@@ -1,8 +1,7 @@
 import { AppLayout } from "@/layouts";
-import { CabeceraContainer } from "@/pods/cabecera";
 import { Typography } from "@mui/material";
 import React from "react";
-import { DetallePedidoScene } from "./detallePedido.scene";
+import { PedidoContainer } from "@/pods/pedido";
 
 export const AppScene: React.FC = () => {
   return (
@@ -10,8 +9,7 @@ export const AppScene: React.FC = () => {
       <Typography variant="h4" className="marginPanel">
         Pedido a proveedor
       </Typography>
-      <CabeceraContainer />
-      <DetallePedidoScene />
+      <PedidoContainer />
     </AppLayout>
   );
 };

@@ -1,7 +1,15 @@
 import { Box, Button } from "@mui/material";
 import React from "react";
 
-export const HeaderDetallePedido: React.FC = () => {
+interface Props {
+  validateOrderLines;
+  inValidateOrderLines;
+}
+
+export const HeaderDetallePedido: React.FC<Props> = ({
+  validateOrderLines,
+  inValidateOrderLines,
+}) => {
   return (
     <>
       <Box
@@ -13,10 +21,18 @@ export const HeaderDetallePedido: React.FC = () => {
           marginBottom: "20px",
         }}
       >
-        <Button variant="contained" sx={{ color: "black" }}>
+        <Button
+          variant="contained"
+          sx={{ color: "black" }}
+          onClick={validateOrderLines}
+        >
           Validar
         </Button>
-        <Button variant="outlined" sx={{ color: "black" }}>
+        <Button
+          variant="outlined"
+          sx={{ color: "black" }}
+          onClick={inValidateOrderLines}
+        >
           Invalidar
         </Button>
       </Box>

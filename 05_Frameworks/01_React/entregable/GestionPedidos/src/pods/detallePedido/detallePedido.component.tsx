@@ -1,13 +1,24 @@
-import { Order } from "@/mock/mockData";
+import { OrderLine } from "@/mock/mockData";
 import { Paper } from "@mui/material";
-import { DataGrid, GridColDef } from "@mui/x-data-grid";
+import { DataGrid, GridColDef, GridRowId, GridRowSelectionModel } from "@mui/x-data-grid";
 import React from "react";
 
 interface Props {
-  orders: Order[];
+  orders: OrderLine[];
+  processRowUpdate: (newRow: OrderLine, oldRow: OrderLine) => OrderLine;
+  setSelectedOrderLineIds;
 }
 
-export const DetallePedido: React.FC<Props> = ({ orders }) => {
+export const DetallePedido: React.FC<Props> = ({
+  orders,
+  processRowUpdate,
+  setSelectedOrderLineIds,
+}) => {
+  const [rowSelectionModel, setRowSelectionModel] = React.useState<GridRowSelectionModel>({
+    type: "include",
+    ids: new Set(),
+  });
+
   const columns: GridColDef[] = [
     { field: "estado", headerName: "Estado", width: 150 },
     {
@@ -16,29 +27,30 @@ export const DetallePedido: React.FC<Props> = ({ orders }) => {
       width: 500,
     },
     { field: "importe", headerName: "Importe", editable: true, flex: 1 },
-
-    /* {
-      field: "fullName",
-      headerName: "Full name",
-      description: "This column has a value getter and is not sortable.",
-      sortable: false,
-      width: 160,
-      valueGetter: (value, row) =>
-        `${row.firstName || ""} ${row.lastName || ""}`,
-    }, */
   ];
 
-  const paginationModel = { page: 0, pageSize: 5 };
+  const handleRowSelection = (newRowSelectionModel: GridRowSelectionModel) => {
+    console.log(`DetallePedido - Row selection ${newRowSelectionModel.ids}`);
+
+    setSelectedOrderLineIds(newRowSelectionModel.ids);
+    setRowSelectionModel(newRowSelectionModel);
+  };
 
   return (
     <Paper sx={{ height: 400, width: "100%" }}>
       <DataGrid
         rows={orders}
         columns={columns}
-        initialState={{ pagination: { paginationModel } }}
+        initialState={{
+          pagination: { paginationModel: { page: 0, pageSize: 5 } },
+        }}
         pageSizeOptions={[5]}
         checkboxSelection
+        disableRowSelectionExcludeModel
+        rowSelectionModel={rowSelectionModel}
+        onRowSelectionModelChange={handleRowSelection}
         sx={{ border: 0 }}
+        processRowUpdate={processRowUpdate}
         disableColumnFilter
         disableColumnMenu
         disableColumnResize

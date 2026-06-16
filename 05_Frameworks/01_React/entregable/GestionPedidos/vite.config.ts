@@ -1,8 +1,10 @@
 import { defineConfig } from "vite";
 import checker from "vite-plugin-checker";
 import react from "@vitejs/plugin-react";
-import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
-  plugins: [checker({ typescript: true }), react(), tsconfigPaths()],
+  plugins: [checker({ typescript: true }), react()],
+  resolve: {
+    tsconfigPaths: true,
+  },
 });
