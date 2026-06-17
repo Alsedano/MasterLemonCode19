@@ -1,6 +1,6 @@
 import { OrderLine } from "@/mock/mockData";
 import { Paper } from "@mui/material";
-import { DataGrid, GridColDef, GridRowId, GridRowSelectionModel } from "@mui/x-data-grid";
+import { DataGrid, GridColDef, GridRowSelectionModel } from "@mui/x-data-grid";
 import React from "react";
 
 interface Props {
@@ -30,9 +30,7 @@ export const DetallePedido: React.FC<Props> = ({
   ];
 
   const handleRowSelection = (newRowSelectionModel: GridRowSelectionModel) => {
-    console.log(`DetallePedido - Row selection ${newRowSelectionModel.ids}`);
-
-    setSelectedOrderLineIds(newRowSelectionModel.ids);
+    setSelectedOrderLineIds(Array.from(newRowSelectionModel.ids));
     setRowSelectionModel(newRowSelectionModel);
   };
 

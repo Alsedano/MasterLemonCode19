@@ -3,9 +3,12 @@ import { DetallePedido } from "./detallePedido.component";
 import { ImporteTotalContext, OrderContext } from "@/core";
 import { OrderLine } from "@/mock/mockData";
 
-export const DetallePedidoContainer: React.FC = () => {
+interface Props {
+  setSelectedOrderLineIds: React.Dispatch<React.SetStateAction<number[]>>;
+}
+
+export const DetallePedidoContainer: React.FC<Props> = ({ setSelectedOrderLineIds }) => {
   const { importeTotal, setImporteTotal } = React.useContext(ImporteTotalContext);
-  const [selectedOrderLineIds, setSelectedOrderLineIds] = React.useState<number[]>([]);
 
   const { order } = React.useContext(OrderContext);
 
@@ -13,8 +16,6 @@ export const DetallePedidoContainer: React.FC = () => {
     const total = calculateTotal(order.orderLines);
     setImporteTotal(total);
   }, []);
-
-  console.log(`DetallePedidoContainer`);
 
   const calculateTotal = (array: OrderLine[]): number => {
     return array.reduce((accumulator, currentValue) => accumulator + currentValue.importe, 0);
@@ -26,8 +27,6 @@ export const DetallePedidoContainer: React.FC = () => {
     // Sorprendentemente, el valor que me da Material-UI para este campo no es number como si lo hace con el prevRow, sino que me devuelve el numero como un string
 
     setImporteTotal(newImporteTotal);
-    console.log(`total: ${newImporteTotal}`);
-
     return newRow;
   };
 

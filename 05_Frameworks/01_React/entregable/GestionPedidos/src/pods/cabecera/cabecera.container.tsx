@@ -1,12 +1,11 @@
 import React, { memo } from "react";
 import { Cabecera } from "./cabecera.component";
-import { ImporteTotalContext, OrderContext } from "@/core";
+import { EstadoContext, ImporteTotalContext, OrderContext } from "@/core";
 
 export const CabeceraContainer: React.FC = memo(() => {
   const { order } = React.useContext(OrderContext);
   const { importeTotal } = React.useContext(ImporteTotalContext);
-
-  console.log("Se pinta CabeceraContainer");
+  const { estado } = React.useContext(EstadoContext);
 
   return (
     <Cabecera
@@ -14,7 +13,7 @@ export const CabeceraContainer: React.FC = memo(() => {
       supplier={order.supplier}
       date={order.date}
       totalOrder={importeTotal}
-      status={order.status}
+      status={estado}
     />
   );
 });

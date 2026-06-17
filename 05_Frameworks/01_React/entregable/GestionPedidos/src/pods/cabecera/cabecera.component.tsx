@@ -1,14 +1,5 @@
 import dayjs from "dayjs";
-import {
-  Box,
-  Button,
-  Checkbox,
-  FormControl,
-  FormControlLabel,
-  Input,
-  InputLabel,
-  TextField,
-} from "@mui/material";
+import { Box, Button, LinearProgress, TextField, Typography } from "@mui/material";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import React from "react";
 
@@ -20,33 +11,19 @@ interface Props {
   status: number;
 }
 
-export const Cabecera: React.FC<Props> = ({
-  orderNumber,
-  supplier,
-  date,
-  totalOrder,
-  status,
-}) => {
+export const Cabecera: React.FC<Props> = ({ orderNumber, supplier, date, totalOrder, status }) => {
   return (
     <>
       <Box
         component="form"
         className="marginPanel"
         sx={{
-          /* "& .MuiTextField-root": { m: 1, width: "25ch" }, */
           borderRadius: 1,
           borderStyle: "solid",
           borderColor: "primary.main",
           padding: "10px",
-          /* bgcolor: "primary.main", */
-        }}
-      >
+        }}>
         <div>
-          {/* <FormControl variant="standard">
-        <InputLabel htmlFor={`${simpleId}-input`}>Name</InputLabel>
-        <Input id={`${simpleId}-input`} defaultValue="Composed TextField" />
-      </FormControl> */}
-          {/*  <FormControl variant="standard"> */}
           <TextField
             id="number"
             label="Número"
@@ -69,11 +46,7 @@ export const Cabecera: React.FC<Props> = ({
             }}
             sx={{ m: 1, width: "25ch" }}
           />
-          <DatePicker
-            readOnly
-            sx={{ margin: "8px", width: "25ch" }}
-            value={dayjs(date)}
-          />
+          <DatePicker readOnly sx={{ margin: "8px", width: "25ch" }} value={dayjs(date)} />
         </div>
         <div>
           <TextField
@@ -87,24 +60,26 @@ export const Cabecera: React.FC<Props> = ({
             }}
             sx={{ m: 1, width: "25ch" }}
           />
-          <FormControlLabel
-            value={status}
-            control={
-              <TextField
-                slotProps={{
-                  input: {
-                    readOnly: true,
-                  },
-                }}
-              />
-            }
-            label="Estado"
-            labelPlacement="bottom"
-            sx={{ m: 1, width: "75px" }}
-          />
+          <Box sx={{ display: "flex", alignItems: "center", margin: "8px" }}>
+            <Box sx={{ minWidth: 50 }}>
+              <Typography variant="body2" sx={{ color: "text.secondary" }}>
+                Estado
+              </Typography>
+            </Box>
+            <Box sx={{ width: "100%", mr: 1 }}>
+              <LinearProgress variant="determinate" value={status} />
+            </Box>
+            <Box sx={{ minWidth: 35 }}>
+              <Typography variant="body2" sx={{ color: "text.secondary" }}>
+                {status}
+              </Typography>
+            </Box>
+          </Box>
         </div>
         <div className="flexEnd">
-          <Button variant="contained">Enviar</Button>
+          <Button variant="contained" disabled={status !== 100}>
+            Enviar
+          </Button>
         </div>
       </Box>
     </>

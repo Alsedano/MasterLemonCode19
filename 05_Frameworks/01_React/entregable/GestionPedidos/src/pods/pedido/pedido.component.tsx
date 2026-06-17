@@ -3,13 +3,18 @@ import { CabeceraContainer } from "../cabecera";
 import { DetallePedidoContainer } from "../detallePedido";
 import { HeaderDetallePedidoContainer } from "../detallePedido/components/headerDetallePedido";
 
-export const Pedido: React.FC = () => {
+interface Props {
+  selectedOrderLineIds: number[];
+  setSelectedOrderLineIds: React.Dispatch<React.SetStateAction<number[]>>;
+}
+
+export const Pedido: React.FC<Props> = ({ selectedOrderLineIds, setSelectedOrderLineIds }) => {
   return (
     <>
       <CabeceraContainer />
       <div className="marginPanel">
-        <HeaderDetallePedidoContainer />
-        <DetallePedidoContainer />
+        <HeaderDetallePedidoContainer selectedOrderLineIds={selectedOrderLineIds} />
+        <DetallePedidoContainer setSelectedOrderLineIds={setSelectedOrderLineIds} />
       </div>
     </>
   );

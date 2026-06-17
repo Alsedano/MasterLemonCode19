@@ -1,14 +1,20 @@
 import React from "react";
 import { Pedido } from "./pedido.component";
-import { OrderProvider } from "@/core/order.context";
-import { ImporteTotalProvider } from "@/core/importeTotal.context";
+import { EstadoProvider, ImporteTotalProvider, OrderProvider } from "@/core";
 
 export const PedidoContainer: React.FC = () => {
+  const [selectedOrderLineIds, setSelectedOrderLineIds] = React.useState<number[]>([]);
+
   return (
     <>
       <OrderProvider>
         <ImporteTotalProvider>
-          <Pedido />
+          <EstadoProvider>
+            <Pedido
+              selectedOrderLineIds={selectedOrderLineIds}
+              setSelectedOrderLineIds={setSelectedOrderLineIds}
+            />
+          </EstadoProvider>
         </ImporteTotalProvider>
       </OrderProvider>
     </>

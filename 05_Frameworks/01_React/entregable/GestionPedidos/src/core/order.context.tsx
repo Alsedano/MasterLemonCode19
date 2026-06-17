@@ -3,6 +3,7 @@ import React, { PropsWithChildren } from "react";
 
 interface OrderContextModel {
   order: Order;
+  setOrder: React.Dispatch<React.SetStateAction<Order>>;
 }
 
 export const OrderContext = React.createContext<OrderContextModel>({
@@ -14,8 +15,11 @@ export const OrderContext = React.createContext<OrderContextModel>({
     status: 0,
     orderLines: [],
   },
+  setOrder: () => {},
 });
 
 export const OrderProvider: React.FC<PropsWithChildren> = ({ children }) => {
-  return <OrderContext value={{ order: mockOrders }}>{children}</OrderContext>;
+  const [order, setOrder] = React.useState(mockOrders);
+
+  return <OrderContext value={{ order: order, setOrder: setOrder }}>{children}</OrderContext>;
 };
