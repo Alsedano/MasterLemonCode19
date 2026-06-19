@@ -1,10 +1,5 @@
 import React, { PropsWithChildren } from "react";
 
-interface EstadoContextModel {
-  estado: number;
-  setEstado: React.Dispatch<React.SetStateAction<number>>;
-}
-
 export const EstadoContext = React.createContext<EstadoContextModel>({
   estado: 0,
   setEstado: () => {},

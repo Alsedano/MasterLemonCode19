@@ -1,20 +1,9 @@
 import { mockOrders, Order } from "@/mock/mockData";
 import React, { PropsWithChildren } from "react";
-
-interface OrderContextModel {
-  order: Order;
-  setOrder: React.Dispatch<React.SetStateAction<Order>>;
-}
+import { OrderContextModel, createDefaultOrder } from "./order.vm";
 
 export const OrderContext = React.createContext<OrderContextModel>({
-  order: {
-    orderNumber: 0,
-    supplier: "",
-    date: new Date(),
-    totalOrder: 0,
-    status: 0,
-    orderLines: [],
-  },
+  order: createDefaultOrder(),
   setOrder: () => {},
 });
 
