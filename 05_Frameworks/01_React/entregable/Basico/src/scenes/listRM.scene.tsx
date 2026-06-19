@@ -1,24 +1,16 @@
 import React from "react";
-import { AppLayout } from "@/layouts";
-import { HeaderButtons } from "@/pods/header/components/headerButtons.component";
-import { HeaderContainer } from "@/pods/header";
+import { CenteredLayout } from "@/layouts";
 import { ListRickMortyContainer } from "@/pods/listRickMorty";
 import { ErrorBoundary } from "@/pods/error404";
+import { ListHeaderContainer } from "@/pods/listHeader";
 
 export const ListRickMortyScene: React.FC = () => {
   return (
-    <AppLayout
-      header={
-        <HeaderContainer
-          title={<></>}
-          navButtons={<HeaderButtons />}
-          search={<></>}
-        />
-      }
-    >
+    <CenteredLayout>
       <ErrorBoundary>
+        <ListHeaderContainer />
         <ListRickMortyContainer />
       </ErrorBoundary>
-    </AppLayout>
+    </CenteredLayout>
   );
 };

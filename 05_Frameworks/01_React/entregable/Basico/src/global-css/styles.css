@@ -1,6 +1,5 @@
 body {
   margin: 0px;
-  /* width: 100vw; */
   height: 100vh;
   background-color: rgb(215, 237, 245);
 }
@@ -22,6 +21,9 @@ body {
   align-items: center;
   justify-items: center;
   height: 100%;
+  width: 95%;
+  margin: 10px;
+  gap: 10px;
 }
 
 .list-user-list-container {

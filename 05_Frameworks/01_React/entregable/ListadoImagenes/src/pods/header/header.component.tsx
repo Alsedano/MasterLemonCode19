@@ -12,17 +12,15 @@ export const Header: React.FC = () => {
           bgcolor: "deepskyblue",
           height: "30px",
           padding: "10px",
-        }}
-      >
-        <img src="/resources/home-logo.png" style={{ width: "36px" }} />
+        }}>
+        <img src="/resources/home-logo.png" style={{ width: "40px" }} />
         <Box
           sx={{
             display: "flex",
             flexDirection: "row",
             justifyContent: "center",
             width: "100%",
-          }}
-        >
+          }}>
           <Typography variant="body1">Listado Imágenes</Typography>
         </Box>
       </Box>

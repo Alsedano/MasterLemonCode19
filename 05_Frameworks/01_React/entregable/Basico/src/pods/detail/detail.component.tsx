@@ -4,7 +4,6 @@ import { MemberDetailEntity } from "./detail.vm";
 import { Box, Button, Card, CardMedia, Grid } from "@mui/material";
 import { Link as RouterLink } from "react-router";
 import ReplyOutlinedIcon from "@mui/icons-material/ReplyOutlined";
-import { GITHUB } from "@/common/constants";
 
 interface Props {
   id: string;
@@ -20,27 +19,22 @@ export const Detail: React.FC<Props> = ({ id, member }) => {
           flexDirection: "row",
           justifyContent: "center",
           alignItems: "center",
-        }}
-      >
+        }}>
         <Card
           sx={{
             width: "50%",
-          }}
-        >
-          <CardMedia
-            component="img"
-            height="340"
-            src={member.avatarUrl || ""}
-            sx={{
-              objectFit: "contain",
-            }}
-          />
-          <Grid
-            container
-            rowSpacing={1}
-            columnSpacing={{ xs: 1 }}
-            sx={{ padding: "0px 10px" }}
-          >
+          }}>
+          {member.avatarUrl ? (
+            <CardMedia
+              component="img"
+              height="340"
+              src={member.avatarUrl}
+              sx={{
+                objectFit: "contain",
+              }}
+            />
+          ) : null}
+          <Grid container rowSpacing={1} columnSpacing={{ xs: 1 }} sx={{ padding: "0px 10px" }}>
             <Grid size={4}>
               <h2> name:</h2>
             </Grid>
@@ -79,11 +73,7 @@ export const Detail: React.FC<Props> = ({ id, member }) => {
             </Grid>
           </Grid>
 
-          <Button
-            component={RouterLink}
-            to={routes.list}
-            startIcon={<ReplyOutlinedIcon />}
-          >
+          <Button component={RouterLink} to={routes.list} startIcon={<ReplyOutlinedIcon />}>
             Back to list page
           </Button>
         </Card>
