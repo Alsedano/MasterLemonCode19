@@ -10,12 +10,24 @@ interface Props {
 export const Search: React.FC<Props> = ({ textSearch, setTextSearch }) => {
   const inputRef = useRef<HTMLInputElement>(null);
 
+  function keyPress(e) {
+    if (e.keyCode == 13) {
+      //Enter key
+      setTextSearch(inputRef.current?.value || "");
+    }
+  }
+
   return (
     <>
       <Paper
         component="form"
         sx={{ p: "2px 4px", display: "flex", alignItems: "center", width: "80%" }}>
-        <InputBase sx={{ ml: 1, flex: 1 }} inputRef={inputRef} defaultValue={textSearch} />
+        <InputBase
+          sx={{ ml: 1, flex: 1 }}
+          inputRef={inputRef}
+          defaultValue={textSearch}
+          onKeyDown={keyPress}
+        />
         <IconButton
           type="button"
           sx={{ p: "10px" }}

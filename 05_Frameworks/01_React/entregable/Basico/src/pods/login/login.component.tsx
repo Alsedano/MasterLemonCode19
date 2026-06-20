@@ -1,34 +1,32 @@
 import React from "react";
 import { AuthContext } from "./login.provider";
-import {
-  Box,
-  Button,
-  Card,
-  CardContent,
-  FormControl,
-  FormLabel,
-  TextField,
-} from "@mui/material";
+import { Box, Button, Card, CardContent, FormControl, FormLabel, TextField } from "@mui/material";
 import PersonIcon from "@mui/icons-material/Person";
 
 export const LoginComponent: React.FC = () => {
-  const { user, handleChangeUser, validateUser } =
-    React.useContext(AuthContext);
+  const { user, handleChangeUser, validateUser } = React.useContext(AuthContext);
+
+  function keyPress(e) {
+    if (e.keyCode == 13) {
+      //Enter key
+      console.log("key press enter");
+      validateUser();
+    }
+  }
+
   return (
     <Card
       variant="outlined"
       sx={{
         display: "flex",
         flexDirection: "column",
-      }}
-    >
+      }}>
       <CardContent
         sx={{
           display: "flex",
           flexDirection: "row",
           justifyContent: "center",
-        }}
-      >
+        }}>
         <PersonIcon
           fontSize="large"
           sx={{
@@ -38,9 +36,7 @@ export const LoginComponent: React.FC = () => {
         />
       </CardContent>
 
-      <Box
-        sx={{ display: "flex", flexDirection: "column", marginBottom: "30px" }}
-      >
+      <Box sx={{ display: "flex", flexDirection: "column", marginBottom: "30px" }}>
         <FormControl>
           <FormLabel>Username</FormLabel>
           <TextField
@@ -71,6 +67,7 @@ export const LoginComponent: React.FC = () => {
             size="small"
             value={user.password}
             onChange={handleChangeUser("password")}
+            onKeyDown={keyPress}
           />
         </FormControl>
       </Box>
