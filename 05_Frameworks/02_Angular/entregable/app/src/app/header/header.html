@@ -1,0 +1,22 @@
+<div class="navbar">
+  <div class="navbar-buttons">
+    <img src="/home-logo.png" alt="Home logo" class="imageLogo" />
+
+    @if (userLogged()) {
+      <app-menu-private></app-menu-private>
+    } @else {
+      <app-menu-public></app-menu-public>
+    }
+  </div>
+  <div>
+    <h2>Ejercicio Angular</h2>
+  </div>
+  @if (userLogged()) {
+    <div class="navbar-buttons">
+      <app-user-logged></app-user-logged>
+      <app-exit-login></app-exit-login>
+    </div>
+  } @else {
+    <div></div>
+  }
+</div>

@@ -1,0 +1,40 @@
+<form class="loginCentered">
+  <mat-card appearance="outlined">
+    <mat-card-header class="cardHeader">
+      <img src="user-circle.svg" class="imgUser" />
+    </mat-card-header>
+    <mat-card-content class="cardContent">
+      <mat-form-field>
+        <mat-label>UserName</mat-label>
+        <input
+          type="email"
+          matInput
+          [formControl]="userNameFormControl"
+          placeholder="Ex. user@example.com"
+        />
+        <!--  <mat-hint>Errors appear instantly!</mat-hint> -->
+        @if (userNameFormControl.hasError('email') && !userNameFormControl.hasError('required')) {
+          <mat-error>Please enter a valid email address</mat-error>
+        }
+        @if (userNameFormControl.hasError('required')) {
+          <mat-error>UserName is <strong>required</strong></mat-error>
+        }
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input type="password" matInput [formControl]="passwordFormControl" />
+        <!--  <mat-hint>Errors appear instantly!</mat-hint>-->
+        @if (passwordFormControl.hasError('email') && !passwordFormControl.hasError('required')) {
+          <mat-error>Please enter a valid email address</mat-error>
+        }
+        @if (passwordFormControl.hasError('required')) {
+          <mat-error>Password is <strong>required</strong></mat-error>
+        }
+      </mat-form-field>
+    </mat-card-content>
+    <mat-card-actions class="cardButtons">
+      <button matButton="filled" type="submit" (click)="handleLogin()">Login</button>
+      <button matButton="outlined" (click)="handleCancel()">Cancel</button>
+    </mat-card-actions>
+  </mat-card>
+</form>
