@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { GalleryVm } from '../../gallery.vm';
 
 @Component({
   selector: 'app-selected-image',
@@ -7,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrl: './selected-image.scss',
 })
 export class SelectedImage {
-
+  @Input() selectedImage: GalleryVm = {
+    id: 0,
+    src: '',
+    title: ''
+  };
 }

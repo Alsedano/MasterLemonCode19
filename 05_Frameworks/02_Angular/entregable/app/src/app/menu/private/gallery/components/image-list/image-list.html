@@ -1,10 +1,7 @@
-<div>
-  <mat-list>
-    @for (image of imageList; track image) {
-      <mat-list-item>
-        <img matListItem src="{{ image.src }}" alt="{{ image.title }}" />
-        <h3 matListItemTitle>{{ image.title }}</h3>
-      </mat-list-item>
-    }
-  </mat-list>
+<div class="listImages">
+  @for (image of imageList; track image) {
+    <div id="{{ image.id }}">
+      <img class="imageItem" src="{{ image.src }}" alt="{{ image.title }}" />
+    </div>
+  }
 </div>

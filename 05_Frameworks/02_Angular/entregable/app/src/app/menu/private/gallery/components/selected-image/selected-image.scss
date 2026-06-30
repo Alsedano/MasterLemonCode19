@@ -1,0 +1,11 @@
+.imgComponent {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.selectedImg {
+  height: 500px;
+  object-fit: contain;
+}

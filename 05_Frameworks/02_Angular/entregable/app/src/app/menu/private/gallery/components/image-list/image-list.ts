@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import { createImageGallery, GalleryVm } from '../gallery.vm';
+import { Component, Input } from '@angular/core';
+import { createImageGallery, GalleryVm } from '../../gallery.vm';
 import { MatListModule } from '@angular/material/list';
 
 @Component({
@@ -9,11 +9,10 @@ import { MatListModule } from '@angular/material/list';
   styleUrl: './image-list.scss',
 })
 export class ImageList {
-
-  imageList: GalleryVm[] = [];
+  @Input() imageList: GalleryVm[] = [];
 
   constructor() {
-    this.imageList = createImageGallery();
+
 
   }
 }
