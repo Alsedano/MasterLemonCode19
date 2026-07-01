@@ -25,7 +25,7 @@ export class ImageList {
 
   isSelected(imageId: number) {
     console.log(`imageId: ${imageId}, selectedImageIndex: ${this.selectedImageIndex}`);
-    return (imageId === this.newImageSelectedId) || (this.getImageIndexById(imageId) === this.selectedImageIndex);
+    return (this.getImageIndexById(imageId) === this.selectedImageIndex);
   }
 
   private getImageIndexById(id: number): number {
