@@ -1,5 +1,8 @@
 <div class="listImages">
-  @for (image of imageList; track image) {
+  <button class="carouselBtn" (click)="decSlice()" [disabled]="disableSliceInit">
+    <mat-icon>chevron_left</mat-icon>
+  </button>
+  @for (image of imageList | slice: sliceInit : sliceEnd; track image) {
     <div id="{{ image.id }}">
       <img
         [class]="isSelected(image.id) ? 'imageItem selectedImage' : 'imageItem'"
@@ -9,4 +12,7 @@
       />
     </div>
   }
+  <button class="carouselBtn" (click)="incSlice()" [disabled]="disableSliceEnd">
+    <mat-icon>chevron_right</mat-icon>
+  </button>
 </div>

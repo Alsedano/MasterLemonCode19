@@ -12,7 +12,7 @@ export function createImageGallery(): GalleryVm[] {
         { id: 4, src: 'assets/nature4.jpg', title: 'nature4' },
         { id: 5, src: 'assets/nature5.jpg', title: 'nature5' },
         { id: 6, src: 'assets/nature6.jpg', title: 'nature6' },
-        /* { id: 7, src: 'assets/nature7.jpg', title: 'nature7' },
-        { id: 8, src: 'assets/nature8.jpg', title: 'nature8' } */
+        { id: 7, src: 'assets/nature7.jpg', title: 'nature7' },
+        { id: 8, src: 'assets/nature8.jpg', title: 'nature8' }
     ];
 }
