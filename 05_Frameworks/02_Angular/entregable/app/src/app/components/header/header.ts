@@ -1,9 +1,7 @@
 import { Component } from '@angular/core';
 import { MenuPublic } from '../menu/public/menu-public/menu-public';
 import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
-import { DomSanitizer } from '@angular/platform-browser';
-import { RouterOutlet } from '@angular/router';
-import { Auth } from '../services/auth';
+import { Auth } from '../../services/auth';
 import { MenuPrivate } from '../menu/private/menu-private/menu-private';
 import { UserLogged } from '../menu/private/user-logged/user-logged';
 import { ExitLogin } from '../menu/private/exit-login/exit-login';
