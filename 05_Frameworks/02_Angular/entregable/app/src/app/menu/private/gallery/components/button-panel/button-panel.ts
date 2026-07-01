@@ -9,43 +9,51 @@ import { MatIcon } from '@angular/material/icon';
 })
 export class ButtonPanel {
   @Input() totalImages: number = 0;
-  @Output() newImageIndexSelected: EventEmitter<number> = new EventEmitter();
+  @Input() selectedImageIndex: number = 0;
+  @Output() newImageIndexSelected: EventEmitter<number> = new EventEmitter<number>();
+  @Output() increaseImage: EventEmitter<void> = new EventEmitter<void>();
+  @Output() decreaseImage: EventEmitter<void> = new EventEmitter<void>();
+  @Output() play: EventEmitter<void> = new EventEmitter<void>();
+  @Output() stop: EventEmitter<void> = new EventEmitter<void>();
 
-  currentImageIndex = 0;
+  disableStart: boolean = false;
+  disableStop: boolean = true;
 
   isDisabledPrevBtn() {
-    console.log(`totalImages: ${this.totalImages}, currentIndex: ${this.currentImageIndex}`);
-    return this.currentImageIndex === 0;
+    return this.selectedImageIndex === 0;
   }
 
   isDisabledNextBtn() {
-    console.log(`totalImages: ${this.totalImages}, currentIndex: ${this.currentImageIndex}`);
-    return this.currentImageIndex === this.totalImages - 1;
+    return this.selectedImageIndex === this.totalImages - 1;
   }
 
   navigateToAnterior() {
-    this.currentImageIndex--;
-    this.newImageIndexSelected.emit(this.currentImageIndex);
+    this.selectedImageIndex--;
+    this.newImageIndexSelected.emit(this.selectedImageIndex);
   }
 
   navigateToSiguiente() {
-    this.currentImageIndex++;
-    this.newImageIndexSelected.emit(this.currentImageIndex);
+    this.selectedImageIndex++;
+    this.newImageIndexSelected.emit(this.selectedImageIndex);
   }
 
   navigateToAumentar() {
-
+    this.increaseImage.emit();
   }
 
   navigateToDisminuir() {
-
+    this.decreaseImage.emit();
   }
 
   navigateToPlay() {
-
+    this.disableStart = true;
+    this.disableStop = false;
+    this.play.emit();
   }
 
   navigateToStop() {
-
+    this.disableStart = false;
+    this.disableStop = true;
+    this.stop.emit();
   }
 }

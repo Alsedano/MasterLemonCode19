@@ -15,11 +15,11 @@
     <mat-icon>zoom_out</mat-icon>
     <span>Disminuir</span>
   </button>
-  <button class="galleryBtn" (click)="navigateToPlay()">
+  <button class="galleryBtn" (click)="navigateToPlay()" [disabled]="disableStart">
     <mat-icon>play_circle</mat-icon>
     <span>Play</span>
   </button>
-  <button class="galleryBtn" (click)="navigateToStop()">
+  <button class="galleryBtn" (click)="navigateToStop()" [disabled]="disableStop">
     <mat-icon>stop_circle</mat-icon>
     <span>Stop</span>
   </button>

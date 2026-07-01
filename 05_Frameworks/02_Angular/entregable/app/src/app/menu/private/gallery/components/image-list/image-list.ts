@@ -20,6 +20,7 @@ export class ImageList {
 
   imageFromListSelected(id: number) {
     this.newImageSelectedId = id;
+    this.selectedImageIndex = this.getImageIndexById(id);
     this.newImageSelected.emit(id);
   }
 

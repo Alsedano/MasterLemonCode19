@@ -1,5 +1,8 @@
 <div class="galleryComponent">
-  <app-selected-image [selectedImage]="selectedImage"></app-selected-image>
+  <app-selected-image
+    [selectedImage]="selectedImage"
+    [zoomInScaleImage]="scaleImage"
+  ></app-selected-image>
   <app-image-list
     [imageList]="imageList"
     [selectedImageIndex]="selectedIndex"
@@ -7,6 +10,11 @@
   ></app-image-list>
   <app-button-panel
     [totalImages]="imageList.length"
+    [selectedImageIndex]="selectedIndex"
     (newImageIndexSelected)="updateImageSelectedByIndex($event)"
+    (increaseImage)="increaseImagePanel()"
+    (decreaseImage)="decreaseImagePanel()"
+    (play)="playCarousel()"
+    (stop)="stopCarousel()"
   ></app-button-panel>
 </div>

@@ -1,3 +1,8 @@
 <div class="imgComponent">
-  <img class="selectedImg" src="{{ selectedImage.src }}" alt="{{ selectedImage.title }}" />
+  <img
+    class="selectedImg"
+    src="{{ selectedImage.src }}"
+    alt="{{ selectedImage.title }}"
+    [style.transform]="'scale(' + zoomInScaleImage + ')'"
+  />
 </div>

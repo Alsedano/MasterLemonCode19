@@ -13,4 +13,8 @@ export class SelectedImage {
     src: '',
     title: ''
   };
+  @Input() zoomInScaleImage: number = 1;
+
+
+
 }
