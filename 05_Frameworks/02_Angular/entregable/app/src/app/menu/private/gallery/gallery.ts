@@ -18,6 +18,7 @@ export class Gallery implements OnInit {
     title: ''
   };
   imageList: GalleryVm[] = [];
+  selectedIndex: number = 0;
 
   constructor() {
 
@@ -26,5 +27,18 @@ export class Gallery implements OnInit {
   ngOnInit(): void {
     this.imageList = createImageGallery();
     this.selectedImage = this.imageList[0];
+  }
+
+  imageFromListSelected(id: number) {
+    console.log(`Image selected: ${id}`);
+    this.selectedImage = this.imageList.find(x => x.id === id)!;
+  }
+
+  updateImageSelectedByIndex(index: number) {
+
+    if (index <= this.imageList.length) {
+      this.selectedIndex = index;
+      this.selectedImage = this.imageList[index];
+    }
   }
 }

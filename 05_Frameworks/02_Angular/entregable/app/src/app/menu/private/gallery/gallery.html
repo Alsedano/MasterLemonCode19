@@ -1,5 +1,12 @@
 <div class="galleryComponent">
   <app-selected-image [selectedImage]="selectedImage"></app-selected-image>
-  <app-image-list [imageList]="imageList"></app-image-list>
-  <app-button-panel></app-button-panel>
+  <app-image-list
+    [imageList]="imageList"
+    [selectedImageIndex]="selectedIndex"
+    (newImageSelected)="imageFromListSelected($event)"
+  ></app-image-list>
+  <app-button-panel
+    [totalImages]="imageList.length"
+    (newImageIndexSelected)="updateImageSelectedByIndex($event)"
+  ></app-button-panel>
 </div>

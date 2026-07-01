@@ -1,7 +1,12 @@
 <div class="listImages">
   @for (image of imageList; track image) {
     <div id="{{ image.id }}">
-      <img class="imageItem" src="{{ image.src }}" alt="{{ image.title }}" />
+      <img
+        [class]="isSelected(image.id) ? 'imageItem selectedImage' : 'imageItem'"
+        src="{{ image.src }}"
+        alt="{{ image.title }}"
+        (click)="imageFromListSelected(image.id)"
+      />
     </div>
   }
 </div>

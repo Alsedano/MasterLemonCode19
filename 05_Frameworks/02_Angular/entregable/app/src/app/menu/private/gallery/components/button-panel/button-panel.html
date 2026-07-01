@@ -1,9 +1,9 @@
 <div class="galleyButtons">
-  <button class="galleryBtn" (click)="navigateToAnterior()">
+  <button class="galleryBtn" [disabled]="isDisabledPrevBtn()" (click)="navigateToAnterior()">
     <mat-icon>arrow_circle_left</mat-icon>
     <span>Anterior</span>
   </button>
-  <button class="galleryBtn" (click)="navigateToSiguiente()">
+  <button class="galleryBtn" [disabled]="isDisabledNextBtn()" (click)="navigateToSiguiente()">
     <mat-icon>arrow_circle_right</mat-icon>
     <span>Siguiente</span>
   </button>
