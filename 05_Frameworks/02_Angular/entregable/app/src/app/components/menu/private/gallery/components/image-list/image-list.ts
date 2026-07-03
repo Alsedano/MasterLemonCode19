@@ -3,10 +3,11 @@ import { createImageGallery, GalleryVm } from '../../gallery.vm';
 import { MatListModule } from '@angular/material/list';
 import { SlicePipe } from '@angular/common';
 import { MatIcon } from '@angular/material/icon';
+import { Rotate } from '@/app/directives/rotate';
 
 @Component({
   selector: 'app-image-list',
-  imports: [MatListModule, MatIcon, SlicePipe],
+  imports: [MatListModule, MatIcon, SlicePipe, Rotate],
   templateUrl: './image-list.html',
   styleUrl: './image-list.scss',
 })
@@ -70,3 +71,4 @@ export class ImageList implements OnChanges {
     this.disableSliceEnd = false;
   }
 }
+

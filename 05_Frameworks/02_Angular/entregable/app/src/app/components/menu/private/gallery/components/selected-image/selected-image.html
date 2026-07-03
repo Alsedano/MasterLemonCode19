@@ -4,5 +4,8 @@
     src="{{ selectedImage.src }}"
     alt="{{ selectedImage.title }}"
     [style.transform]="'scale(' + zoomInScaleImage + ')'"
+    appRotate
+    [rotateDeg]="45"
+    [step]="15"
   />
 </div>

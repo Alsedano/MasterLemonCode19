@@ -5,6 +5,7 @@
   @for (image of imageList | slice: sliceInit : sliceEnd; track image) {
     <div id="{{ image.id }}">
       <img
+        appRotate
         [class]="isSelected(image.id) ? 'imageItem selectedImage' : 'imageItem'"
         src="{{ image.src }}"
         alt="{{ image.title }}"
