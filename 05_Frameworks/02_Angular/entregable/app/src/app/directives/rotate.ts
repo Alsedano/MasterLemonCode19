@@ -1,7 +1,7 @@
 import { Directive, ElementRef, HostListener, Input, OnInit } from '@angular/core';
 
 @Directive({
-  selector: '[appRotate]'
+  selector: 'img [appRotate]'
 })
 export class Rotate implements OnInit {
 
@@ -13,7 +13,7 @@ export class Rotate implements OnInit {
   constructor(private el: ElementRef) { }
   ngOnInit(): void {
     this.rotDeg = this.rotateDeg || 0;
-    this.step = this.step || 20;
+    this.step = this.step || 10;
 
     if (this.rotDeg > 0) {
       this.el.nativeElement.style.transform = 'rotate(' + this.rotDeg + 'deg)';
