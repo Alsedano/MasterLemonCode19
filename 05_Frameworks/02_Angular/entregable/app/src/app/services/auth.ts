@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from './auth.vm';
+import { delay, map, Observable, of, timer } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -10,14 +11,14 @@ export class Auth {
 
   constructor() { }
 
-  login(username: string, password: string): boolean {
+  login(username: string, password: string): Observable<boolean> {
     if (username === 'master@lemoncode.net' && password === '12345678') {
 
       this.loggedUser = { userName: username, password };
       localStorage.setItem('loggedUser', JSON.stringify(this.loggedUser));
-      return true;
+      return of(true).pipe(delay(2000));
     }
-    return false;
+    return of(false).pipe(delay(2000));
   }
 
   logout(): void {

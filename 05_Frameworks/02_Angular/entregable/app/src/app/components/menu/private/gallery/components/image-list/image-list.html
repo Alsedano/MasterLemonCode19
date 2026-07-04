@@ -6,6 +6,7 @@
     <div id="{{ image.id }}">
       <img
         appRotate
+        [rotateDeg]="5"
         [class]="isSelected(image.id) ? 'imageItem selectedImage' : 'imageItem'"
         src="{{ image.src }}"
         alt="{{ image.title }}"
