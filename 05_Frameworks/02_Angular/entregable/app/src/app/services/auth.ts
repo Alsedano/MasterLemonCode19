@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User } from './auth.vm';
-import { delay, map, Observable, of, timer } from 'rxjs';
+import { delay, Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',

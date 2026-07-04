@@ -23,17 +23,11 @@ export class Login implements OnDestroy {
   loginSubscription!: Subscription;
   loading: boolean = false;
 
-  constructor(private router: Router, private authService: Auth) {
-
-  }
+  constructor(private router: Router, private authService: Auth) { }
 
   handleLogin() {
-    //TODOD. dejar vacios los campos
     this.loading = true;
-    // const loginCorrect = this.authService.login(this.userNameFormControl.value ?? '', this.passwordFormControl.value ?? '');
-    const loginCorrect = this.authService.login('master@lemoncode.net', '12345678');
-
-
+    const loginCorrect = this.authService.login(this.userNameFormControl.value ?? '', this.passwordFormControl.value ?? '');
 
     this.loginSubscription = loginCorrect.subscribe({
       next: (logged) => { if (logged) this.router.navigate(['/dashboard']) },

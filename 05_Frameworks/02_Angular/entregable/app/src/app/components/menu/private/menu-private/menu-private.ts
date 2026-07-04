@@ -11,12 +11,8 @@ import { Router } from '@angular/router';
   styleUrl: './menu-private.scss',
 })
 export class MenuPrivate {
-  /**
-   *
-   */
-  constructor(private router: Router) {
 
-  }
+  constructor(private router: Router) { }
 
   navigateToDashboard() {
     this.router.navigate(['/dashboard']);

@@ -3,7 +3,7 @@ import { ButtonPanel } from './components/button-panel/button-panel';
 import { ImageList } from './components/image-list/image-list';
 import { SelectedImage } from './components/selected-image/selected-image';
 import { createImageGallery, GalleryVm } from './gallery.vm';
-import { Observable, Subscription, timer } from 'rxjs';
+import { Subscription, timer } from 'rxjs';
 
 @Component({
   selector: 'app-gallery',
@@ -24,9 +24,7 @@ export class Gallery implements OnInit, OnDestroy {
 
   private subscription!: Subscription;
 
-  constructor() {
-
-  }
+  constructor() { }
 
   ngOnInit(): void {
     this.imageList = createImageGallery();

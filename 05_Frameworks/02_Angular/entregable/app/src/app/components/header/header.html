@@ -13,7 +13,7 @@
   </div>
   @if (userLogged()) {
     <div class="navbar-buttons">
-      <app-user-logged></app-user-logged>
+      <app-user-logged [userName]="userName"></app-user-logged>
       <app-exit-login></app-exit-login>
     </div>
   } @else {

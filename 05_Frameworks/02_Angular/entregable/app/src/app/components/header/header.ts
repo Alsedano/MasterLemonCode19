@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MenuPublic } from '../menu/public/menu-public/menu-public';
 import { MatIconModule, MatIconRegistry } from '@angular/material/icon';
 import { Auth } from '../../services/auth';
@@ -12,11 +12,17 @@ import { ExitLogin } from '../menu/private/exit-login/exit-login';
   templateUrl: './header.html',
   styleUrl: './header.scss',
 })
-export class Header {
+export class Header implements OnInit {
+
+  userName: string = "";
 
   constructor(private authService: Auth) { }
 
   userLogged(): boolean {
     return this.authService.isLogged();
+  }
+
+  ngOnInit(): void {
+    this.userName = this.authService.getUsername();
   }
 }

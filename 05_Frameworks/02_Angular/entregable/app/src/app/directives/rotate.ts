@@ -11,6 +11,7 @@ export class Rotate implements OnInit {
   private rotDeg: number = 0;
 
   constructor(private el: ElementRef) { }
+
   ngOnInit(): void {
     this.rotDeg = this.rotateDeg || 0;
     this.step = this.step || 10;

@@ -25,7 +25,6 @@
         <mat-form-field>
           <mat-label>Password</mat-label>
           <input type="password" matInput [formControl]="passwordFormControl" />
-          <!--  <mat-hint>Errors appear instantly!</mat-hint>-->
           @if (passwordFormControl.hasError('email') && !passwordFormControl.hasError('required')) {
             <mat-error>Please enter a valid email address</mat-error>
           }

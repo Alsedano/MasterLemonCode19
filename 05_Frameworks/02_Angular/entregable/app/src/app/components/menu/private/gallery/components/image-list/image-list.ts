@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
-import { createImageGallery, GalleryVm } from '../../gallery.vm';
+import { GalleryVm } from '../../gallery.vm';
 import { MatListModule } from '@angular/material/list';
 import { SlicePipe } from '@angular/common';
 import { MatIcon } from '@angular/material/icon';

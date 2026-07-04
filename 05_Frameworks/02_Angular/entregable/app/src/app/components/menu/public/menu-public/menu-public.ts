@@ -11,12 +11,8 @@ import { Router } from '@angular/router';
   styleUrl: './menu-public.scss',
 })
 export class MenuPublic {
-  /**
-   *
-   */
-  constructor(private router: Router) {
 
-  }
+  constructor(private router: Router) { }
 
   navigateToHome() {
     this.router.navigate(['/home']);
