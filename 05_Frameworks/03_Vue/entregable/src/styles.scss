@@ -1,0 +1,17 @@
+@use 'tailwindcss';
+$backgroundColor: #484848;
+/* $backgroundColor: lightblue; */
+
+body {
+  background-color: $backgroundColor;
+  color: white;
+  margin: 0px;
+  padding: 0px;
+  height: 100vh;
+}
+
+.columnLayout {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
