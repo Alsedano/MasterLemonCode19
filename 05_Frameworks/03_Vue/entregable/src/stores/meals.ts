@@ -1,13 +1,13 @@
-import { createEmptyMeal, type Meal } from "@/types";
+import { type Meal } from "@/types";
 import { defineStore } from "pinia";
 import { ref } from "vue";
 
 export const useMealStore = defineStore("meals", () => {
     const meals = ref<Meal[]>([]);
-    /* const listItems = ref<Map<List["id"], ListItem[]>>(new Map()); */
 
     const addDish = async (name: string, weekDay: string, dinner: boolean) => {
         const newMeal: Meal = {
+            id: meals.value.length,
             name: name,
             weekDay: weekDay,
             dinner: dinner
@@ -26,7 +26,7 @@ export const useMealStore = defineStore("meals", () => {
         return meals.value.filter(m => !m.dinner) || [];
     };
 
-    const getLunchMealsForDay = (day: string): Meal[] => {
+    /* const getLunchMealsForDay = (day: string): Meal[] => {
         const lunchMeals = meals.value.filter(m => !m.dinner && m.weekDay == day)
         return lunchMeals?.length > 0 ? lunchMeals : createEmptyMeal(true);
     };
@@ -34,6 +34,25 @@ export const useMealStore = defineStore("meals", () => {
     const getDinnerMealsForDay = (day: string) => {
         const dinnerMeals = meals.value.filter(m => m.dinner && m.weekDay == day);
         return dinnerMeals?.length > 0 ? dinnerMeals : createEmptyMeal(false);
+    }; */
+
+    const getLunchMealsForDay = (day: string): Meal[] => {
+        return meals.value.filter(m => !m.dinner && m.weekDay == day)
+    };
+
+    const getDinnerMealsForDay = (day: string): Meal[] => {
+        return meals.value.filter(m => m.dinner && m.weekDay == day);
+    };
+
+    const getMeal = (id: number): Meal => {
+        return meals.value.find(m => m.id === id) as Meal;
+    };
+
+    const updateDish = (id: number, name: string, weekDay: string, dinner: boolean) => {
+        const m = meals.value.find(m => m.id === id) as Meal;
+        m.name = name;
+        m.weekDay = weekDay;
+        m.dinner = dinner;
     };
     /* 
         const updateList = async (listId: string, updatedList: Partial<List>) => {
@@ -100,6 +119,8 @@ export const useMealStore = defineStore("meals", () => {
         getdinnerMeals,
         getDinnerMeals,
         getLunchMealsForDay,
-        getDinnerMealsForDay
+        getDinnerMealsForDay,
+        getMeal,
+        updateDish
     };
 });

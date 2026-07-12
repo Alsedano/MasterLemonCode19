@@ -3,13 +3,7 @@
 </script>
 
 <template>
-    <div>
-        <h2>Footer</h2>
+    <div class="flex justify-end pr-10">
+        <h2>práctica Vue LemonCode 2026</h2>
     </div>
 </template>
-
-<style scoped>
-div {
-    background-color: aqua;
-}
-</style>
