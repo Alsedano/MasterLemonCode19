@@ -48,70 +48,28 @@ export const useMealStore = defineStore("meals", () => {
         return meals.value.find(m => m.id === id) as Meal;
     };
 
-    const updateDish = (id: number, name: string, weekDay: string, dinner: boolean) => {
+    const updateDish = async (id: number, name: string, weekDay: string, dinner: boolean) => {
         const m = meals.value.find(m => m.id === id) as Meal;
         m.name = name;
         m.weekDay = weekDay;
         m.dinner = dinner;
     };
-    /* 
-        const updateList = async (listId: string, updatedList: Partial<List>) => {
-            const list = lists.value.find((list) => list.id === listId);
-            if (list) {
-                Object.assign(list, updatedList);
-            }
-        };
-    
-        const deleteList = async (listId: string) => {
-            lists.value = lists.value.filter((list) => list.id !== listId);
-        };
-    
-        const createListItem = async (listId: string, content = "") => {
-            const isListCreated = listItems.value.has(listId);
-    
-            let position = 0;
-            if (isListCreated) {
-                position = listItems.value.get(listId)?.length || 0;
-            }
-            const newListItem: ListItem = {
-                id: crypto.randomUUID(),
-                listId,
-                content,
-                isChecked: false,
-                position,
-                createdAt: Date.now(),
-            };
-    
-            if (isListCreated) {
-                listItems.value.get(listId)?.push(newListItem);
-            } else {
-                listItems.value.set(listId, [newListItem]);
-            }
-    
-            return newListItem;
-        };
-    
-        const getListItems = async (listId: string) => {
-            return listItems.value.get(listId) || [];
-        };
-    
-        const updateListItem = async (itemId: string, listId: string, updatedItem: Partial<ListItem>) => {
-            const listItemsIternal = await getListItems(listId);
-            const item = listItemsIternal.find((item) => item.id === itemId);
-            if (item) {
-                Object.assign(item, updatedItem);
-            }
-            listItems.value.set(listId, listItemsIternal);
-        };
-    
-        const deleteListItem = async (itemId: string, listId: string) => {
-            const listItemsIternal = await getListItems(listId);
-            const item = listItemsIternal.find((item) => item.id === itemId);
-            if (item) {
-                listItemsIternal.splice(listItemsIternal.indexOf(item), 1);
-            }
-            listItems.value.set(listId, listItemsIternal);
-        }; */
+
+    const deleteMeal = async (id: number) => {
+        const index = meals.value.findIndex(m => m.id === id);
+        meals.value.splice(index, 1);
+    };
+
+    const handleFavorite = async (id: number) => {
+        const m = meals.value.find(m => m.id === id) as Meal;
+        m.favorite = !m.favorite;
+    };
+
+    const clearAllItems = async () => {
+        if (confirm('¿Estas seguro de limpiar la lista de platos?')) {
+            meals.value = [];
+        }
+    }
 
     return {
         meals,
@@ -121,6 +79,9 @@ export const useMealStore = defineStore("meals", () => {
         getLunchMealsForDay,
         getDinnerMealsForDay,
         getMeal,
-        updateDish
+        updateDish,
+        deleteMeal,
+        handleFavorite,
+        clearAllItems
     };
 });

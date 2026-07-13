@@ -10,13 +10,14 @@ const meal = ref(createEmptyMeal(false));
 const mealStore = useMealStore();
 
 function onEditMeal(id: number) {
-    meal.value = mealStore.getMeal(id);
+    const mealFromStore = mealStore.getMeal(id);
+    meal.value = { ...mealFromStore };
 }
 </script>
 
 <template>
     <div class="columnLayout bodyLayout">
-        <DishForm :meal="meal"></DishForm>
+        <DishForm :mealProp="meal"></DishForm>
         <WeekView @editMeal="onEditMeal"></WeekView>
     </div>
 </template>

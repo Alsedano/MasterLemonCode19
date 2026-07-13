@@ -3,6 +3,7 @@ export interface Meal {
     name: string;
     weekDay: string;
     dinner: boolean;
+    favorite?: boolean;
 }
 
 export function createNoMealItem(lunch: boolean): Meal[] {
@@ -10,7 +11,8 @@ export function createNoMealItem(lunch: boolean): Meal[] {
         id: 0,
         name: "No hay comidas",
         weekDay: "",
-        dinner: lunch
+        dinner: lunch,
+        favorite: false
     }]
 }
 
@@ -19,6 +21,7 @@ export function createEmptyMeal(lunch: boolean): Meal {
         id: 0,
         name: "",
         weekDay: "Dia de la semana",
-        dinner: lunch
+        dinner: lunch,
+        favorite: false
     }
 }
