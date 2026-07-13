@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import FooterItem from '@/components/FooterItem.vue';
 import HeaderItem from '@/components/HeaderItem.vue';
-import MealPlanner from './MealPlanner.vue';
+import MealPlanner from '../components/MealPlanner.vue';
 
 </script>
 
 <template>
     <div class="grid h-screen grid-cols-1 grid-rows-[50px_1fr_50px]">
         <HeaderItem></HeaderItem>
-        <MealPlanner></MealPlanner>
+        <RouterView />
         <FooterItem></FooterItem>
     </div>
 </template>

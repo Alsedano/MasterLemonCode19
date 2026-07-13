@@ -1,73 +1,77 @@
-import { type Meal } from "@/types";
-import { defineStore } from "pinia";
-import { ref } from "vue";
+import { type Meal } from '@/types'
+import { defineStore } from 'pinia'
+import { ref } from 'vue'
 
-export const useMealStore = defineStore("meals", () => {
-    const meals = ref<Meal[]>([]);
+export const useMealStore = defineStore('meals', () => {
+    const meals = ref<Meal[]>([])
 
     const addDish = async (name: string, weekDay: string, dinner: boolean) => {
         const newMeal: Meal = {
             id: meals.value.length,
             name: name,
             weekDay: weekDay,
-            dinner: dinner
-        };
+            dinner: dinner,
+        }
 
-        meals.value.push(newMeal);
+        meals.value.push(newMeal)
 
-        return meals;
-    };
+        return meals
+    }
 
     const getdinnerMeals = async () => {
-        return meals.value.filter(m => m.dinner) || [];
-    };
+        return meals.value.filter((m) => m.dinner) || []
+    }
 
     const getDinnerMeals = async () => {
-        return meals.value.filter(m => !m.dinner) || [];
-    };
+        return meals.value.filter((m) => !m.dinner) || []
+    }
 
     /* const getLunchMealsForDay = (day: string): Meal[] => {
         const lunchMeals = meals.value.filter(m => !m.dinner && m.weekDay == day)
         return lunchMeals?.length > 0 ? lunchMeals : createEmptyMeal(true);
     };
-
+ 
     const getDinnerMealsForDay = (day: string) => {
         const dinnerMeals = meals.value.filter(m => m.dinner && m.weekDay == day);
         return dinnerMeals?.length > 0 ? dinnerMeals : createEmptyMeal(false);
     }; */
 
     const getLunchMealsForDay = (day: string): Meal[] => {
-        return meals.value.filter(m => !m.dinner && m.weekDay == day)
-    };
+        return meals.value.filter((m) => !m.dinner && m.weekDay == day)
+    }
 
     const getDinnerMealsForDay = (day: string): Meal[] => {
-        return meals.value.filter(m => m.dinner && m.weekDay == day);
-    };
+        return meals.value.filter((m) => m.dinner && m.weekDay == day)
+    }
 
     const getMeal = (id: number): Meal => {
-        return meals.value.find(m => m.id === id) as Meal;
-    };
+        return meals.value.find((m) => m.id === id) as Meal
+    }
+
+    const getFavorites = (): Meal[] => {
+        return meals.value.filter((m) => m.favorite)
+    }
 
     const updateDish = async (id: number, name: string, weekDay: string, dinner: boolean) => {
-        const m = meals.value.find(m => m.id === id) as Meal;
-        m.name = name;
-        m.weekDay = weekDay;
-        m.dinner = dinner;
-    };
+        const m = meals.value.find((m) => m.id === id) as Meal
+        m.name = name
+        m.weekDay = weekDay
+        m.dinner = dinner
+    }
 
     const deleteMeal = async (id: number) => {
-        const index = meals.value.findIndex(m => m.id === id);
-        meals.value.splice(index, 1);
-    };
+        const index = meals.value.findIndex((m) => m.id === id)
+        meals.value.splice(index, 1)
+    }
 
     const handleFavorite = async (id: number) => {
-        const m = meals.value.find(m => m.id === id) as Meal;
-        m.favorite = !m.favorite;
-    };
+        const m = meals.value.find((m) => m.id === id) as Meal
+        m.favorite = !m.favorite
+    }
 
     const clearAllItems = async () => {
         if (confirm('¿Estas seguro de limpiar la lista de platos?')) {
-            meals.value = [];
+            meals.value = []
         }
     }
 
@@ -79,9 +83,14 @@ export const useMealStore = defineStore("meals", () => {
         getLunchMealsForDay,
         getDinnerMealsForDay,
         getMeal,
+        getFavorites,
         updateDish,
         deleteMeal,
         handleFavorite,
-        clearAllItems
-    };
-});
+        clearAllItems,
+    }
+},
+    {
+        persist: true,
+    },
+)
