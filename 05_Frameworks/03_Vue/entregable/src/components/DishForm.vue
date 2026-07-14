@@ -18,11 +18,6 @@ const mealStore = useMealStore();
 
 let isEditing: boolean = false;
 
-/* watchEffect(() => {
-  meal.value = props.meal;
-  isEditing = true;
-}); */
-
 watch(props, () => {
   dishName.value = props.mealProp.name;
   weekDay.value = props.mealProp.weekDay;

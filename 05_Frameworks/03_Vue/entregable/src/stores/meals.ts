@@ -26,16 +26,6 @@ export const useMealStore = defineStore('meals', () => {
         return meals.value.filter((m) => !m.dinner) || []
     }
 
-    /* const getLunchMealsForDay = (day: string): Meal[] => {
-        const lunchMeals = meals.value.filter(m => !m.dinner && m.weekDay == day)
-        return lunchMeals?.length > 0 ? lunchMeals : createEmptyMeal(true);
-    };
- 
-    const getDinnerMealsForDay = (day: string) => {
-        const dinnerMeals = meals.value.filter(m => m.dinner && m.weekDay == day);
-        return dinnerMeals?.length > 0 ? dinnerMeals : createEmptyMeal(false);
-    }; */
-
     const getLunchMealsForDay = (day: string): Meal[] => {
         return meals.value.filter((m) => !m.dinner && m.weekDay == day)
     }
