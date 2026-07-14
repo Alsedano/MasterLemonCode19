@@ -70,9 +70,7 @@ export const useMealStore = defineStore('meals', () => {
     }
 
     const clearAllItems = async () => {
-        if (confirm('¿Estas seguro de limpiar la lista de platos?')) {
-            meals.value = []
-        }
+        meals.value = []
     }
 
     return {

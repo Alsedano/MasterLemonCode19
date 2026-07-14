@@ -16,14 +16,8 @@ function onEditMeal(id: number) {
 </script>
 
 <template>
-    <div class="columnLayout bodyLayout">
+    <div class="flex flex-wrap flex-column h-full">
         <DishForm :mealProp="meal"></DishForm>
         <WeekView @editMeal="onEditMeal"></WeekView>
     </div>
 </template>
-
-<style scoped>
-.bodyLayout {
-    height: 100%;
-}
-</style>

@@ -31,6 +31,10 @@ watch(props, () => {
 });
 
 function AddMeal() {
+  if (dishName.value === "") return confirm('El nombre del plato no puede estar vacio');
+
+  if (weekDay.value === "Dia de la semana") return confirm('El dia de la semana no puede estar vacio');
+
   mealStore.addDish(dishName.value, weekDay.value, isDinner.value);
 
   cleanInputs();

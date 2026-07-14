@@ -20,8 +20,8 @@ function goToPlatosFavoritos() {
         Meal Planner</h1>
     </div>
     <div class="flex flex-row gap-5">
-      <button class="border-2 border-indigo-500" @click="goToPlanSemanal">Plan semanal</button>
-      <button class="border-2 border-indigo-500" @click="goToPlatosFavoritos">Platos favoritos</button>
+      <button class="text-teal-500" @click="goToPlanSemanal">Plan semanal</button>
+      <button class="text-teal-500" @click="goToPlatosFavoritos">Platos favoritos</button>
     </div>
   </div>
 </template>
