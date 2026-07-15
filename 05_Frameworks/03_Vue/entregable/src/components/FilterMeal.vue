@@ -17,17 +17,26 @@ const isFilteringByCategory = ref(false);
 
 function filterByName() {
     isFilteringByName.value = !isFilteringByName.value;
-    if (!isFilteringByName.value) emit('filterByName', "");
+    if (!isFilteringByName.value) {
+        name.value = "";
+        emit('filterByName', "")
+    };
 }
 
 function filterByDay() {
     isFilteringByDay.value = !isFilteringByDay.value;
-    if (!isFilteringByDay.value) emit('filterByDay', "");
+    if (!isFilteringByDay.value) {
+        day.value = "";
+        emit('filterByDay', "")
+    };
 }
 
 function filterByCategory() {
     isFilteringByCategory.value = !isFilteringByCategory.value;
-    if (!isFilteringByCategory.value) emit('filterByCategory', "");
+    if (!isFilteringByCategory.value) {
+        category.value = "";
+        emit('filterByCategory', "")
+    };
 }
 
 function filter() {
