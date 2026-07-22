@@ -1,7 +1,7 @@
 {
-  "name": "nextjs-examples",
+  "name": "entregable-tanstack",
   "version": "1.0.0",
-  "description": "Nextjs examples",
+  "description": "Entregable Tanstack Start",
   "type": "module",
   "imports": {
     "#*": "./src/*"
