@@ -16,6 +16,9 @@
     "paths": {
       "#*": ["./src/*"]
     }
+    /* "paths": {
+      "@/*": ["./src/*"]
+    } */
   },
   "include": ["./src/**/*", "config/test/config.d.ts"]
 }

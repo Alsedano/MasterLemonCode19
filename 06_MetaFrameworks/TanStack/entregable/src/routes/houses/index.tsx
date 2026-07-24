@@ -1,20 +1,24 @@
-import { createFileRoute, Link, useNavigate } from '@tanstack/react-router';
-
-const getHouseList = async () =>
-  await fetch('/api/houses').then((res) => res.json());
+import { createFileRoute, useNavigate } from '@tanstack/react-router';
+import { HouseListContainer, mapHousesEntityToVm } from '#/pods/house-list';
+import { api } from '#pods/house-list';
 
 export const Route = createFileRoute('/houses/')({
-  loader: () => getHouseList(),
+  head: () => ({
+    meta: [{ title: 'Rent a house - House list' }],
+  }),
+  loader: () => api.getHouseList(),
   component: RouteComponent,
 });
 
 function RouteComponent() {
-  const navigate = useNavigate();
   const houses = Route.useLoaderData();
 
   return (
     <>
-      <ul>
+      <HouseListContainer
+        houses={mapHousesEntityToVm(houses)}
+      ></HouseListContainer>
+      {/* <ul>
         {houses.map((house) => (
           <li key={house.id}>
             <Link to="/houses/$id" params={{ id: house.id }}>
@@ -22,8 +26,7 @@ function RouteComponent() {
             </Link>
           </li>
         ))}
-      </ul>
-      <button onClick={() => navigate({ to: '/' })}>Go back to home</button>
+      </ul> */}
     </>
   );
 }

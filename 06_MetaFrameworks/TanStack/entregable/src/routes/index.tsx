@@ -7,7 +7,6 @@ export const Route = createFileRoute('/')({
 function RouteComponent() {
   return (
     <>
-      <div>Hello "/"!</div>
       <Link to="/houses">Navigate to house list</Link>
     </>
   );
