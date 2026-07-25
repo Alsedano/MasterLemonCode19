@@ -3,7 +3,7 @@ import * as am from "./api";
 import * as vm from '../house-list.vm';
 
 export const mapHouseEntityToVm = (member: am.HouseEntity): vm.HouseList => {
-    return {
+    const m: vm.HouseList = {
         id: member.id,
         name: member.name,
         description: member.description,
@@ -16,14 +16,12 @@ export const mapHouseEntityToVm = (member: am.HouseEntity): vm.HouseList => {
         price: member.price,
         image: `${ENV.BASE_PICTURES_URL}${member.image}`,
         amenities: member.amenities,
-        reviews: member.reviews?.map(r => ({
-            id: r.id,
-            author: r.author,
-            date: r.date,
-            comment: r.comment,
-            rating: r.rating,
-        })) || [],
-    }
+        reviewAverage: 0
+    };
+    const sum = member.reviews?.reduce((acc, cur) => acc + cur.rating, 0);
+    m.reviewAverage = sum / member.reviews.length;
+
+    return m;
 }
 
 export const mapHousesEntityToVm = (housesEntity: am.HouseEntity[]): vm.HouseList[] => {

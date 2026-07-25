@@ -1,11 +1,3 @@
-export interface ReviewList {
-  id: string;
-  author: string;
-  date: string;
-  comment: string;
-  rating: number;
-}
-
 export interface HouseList {
   id: string;
   name: string;
@@ -19,5 +11,5 @@ export interface HouseList {
   price: number;
   image: string;
   amenities: string[];
-  reviews: ReviewList[];
+  reviewAverage: number;
 }

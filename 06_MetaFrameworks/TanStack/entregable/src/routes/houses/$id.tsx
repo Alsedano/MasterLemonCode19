@@ -1,5 +1,6 @@
 import { createFileRoute, Link } from '@tanstack/react-router';
 import { api, HouseContainer } from '#pods/house';
+import { mapHouseItemToVm } from '#pods/house/repository';
 
 export const Route = createFileRoute('/houses/$id')({
   loader: ({ params }) => api.getHouse({ data: { id: params.id } }),
@@ -11,5 +12,5 @@ export const Route = createFileRoute('/houses/$id')({
 
 function RouteComponent() {
   const house = Route.useLoaderData();
-  return <HouseContainer house={house}></HouseContainer>;
+  return <HouseContainer house={mapHouseItemToVm(house)}></HouseContainer>;
 }
