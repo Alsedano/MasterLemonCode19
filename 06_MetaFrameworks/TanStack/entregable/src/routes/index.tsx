@@ -16,7 +16,6 @@ function RouteComponent() {
 
   return (
     <>
-      <Link to="/houses">Navigate to house list</Link>
       <HouseListContainer
         houses={mapHousesEntityToVm(houses)}
       ></HouseListContainer>
