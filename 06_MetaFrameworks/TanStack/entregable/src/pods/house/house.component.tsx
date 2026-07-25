@@ -16,7 +16,7 @@ export const House: React.FC<Props> = ({ house }) => {
       : '0.0';
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-slate-50 px-4 py-8">
+    <div className="flex  items-center justify-center bg-slate-50 px-4 py-8 w-4xl">
       <div className="w-full max-w-5xl overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
         <div className="flex flex-col lg:flex-row">
           <img

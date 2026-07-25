@@ -8,7 +8,7 @@ interface Props {
 
 export const Houses: React.FC<Props> = ({ houses }) => {
   return (
-    <div className="flex flex-row flex-wrap">
+    <div className="flex flex-row flex-wrap gap-2">
       {houses.map((house) => (
         <HouseItemContainer house={house} key={house.id}></HouseItemContainer>
       ))}

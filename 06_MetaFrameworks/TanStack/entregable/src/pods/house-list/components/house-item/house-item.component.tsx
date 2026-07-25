@@ -33,7 +33,9 @@ export const HouseItem: React.FC<Props> = ({ house }) => {
           </p>
         </div>
         <div className="flex flex-row justify-between">
-          <p>Precio: {house.price}€</p>
+          <span className="rounded-full bg-sky-100 px-3 py-1 text-sm font-medium text-sky-700">
+            {house.price}€
+          </span>
           <div className="flex flex-row items-center">
             <img src="/icon-star.png" className="size-4" />
             {house.reviewAverage}
