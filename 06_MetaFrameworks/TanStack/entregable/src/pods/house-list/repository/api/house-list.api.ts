@@ -6,7 +6,7 @@ const url_houses = `${ENV.BASE_API_URL}/houses`;
 
 export const getHouseList = createServerFn().handler(
     async ({ data }): Promise<HouseEntity[]> => {
-        const { filter } = data || {};
+        const { filter } = (data || {}) as { filter?: string };
         let houses: HouseEntity[] = await fetch(url_houses).then((response) => response.json());
         if (filter) houses = houses.filter((m) => m.name.toLowerCase().includes(filter.toLowerCase()));
         return houses;

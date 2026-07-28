@@ -11,5 +11,6 @@ export interface HouseList {
   price: number;
   image: string;
   amenities: string[];
+  isBooked: boolean;
   reviewAverage: number;
 }

@@ -16,6 +16,7 @@ export const mapHouseEntityToVm = (member: am.HouseEntity): vm.HouseList => {
         price: member.price,
         image: `${ENV.BASE_PICTURES_URL}${member.image}`,
         amenities: member.amenities,
+        isBooked: member.isBooked,
         reviewAverage: 0
     };
     const sum = member.reviews?.reduce((acc, cur) => acc + cur.rating, 0);

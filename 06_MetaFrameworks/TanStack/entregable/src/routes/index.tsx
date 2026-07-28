@@ -3,7 +3,6 @@ import { createFileRoute, Link } from '@tanstack/react-router';
 import { api } from '#pods/house-list';
 
 export const Route = createFileRoute('/')({
-  //component: RouteComponent,
   head: () => ({
     meta: [{ title: 'Rent a house - House list' }],
   }),

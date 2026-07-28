@@ -17,5 +17,6 @@ export interface HouseVm {
   bathrooms: number;
   price: number;
   image: string;
+  isBooked: boolean;
   reviews: ReviewLisVM[];
 }

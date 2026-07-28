@@ -1,12 +1,15 @@
 import React from 'react';
-import { Link } from '@tanstack/react-router';
+import { useNavigate } from '@tanstack/react-router';
 import { HouseVm } from './house.vm';
+import { Image } from '@unpic/react';
 
 interface Props {
   house: HouseVm;
+  handleHouseBooking;
 }
 
-export const House: React.FC<Props> = ({ house }) => {
+export const House: React.FC<Props> = ({ house, handleHouseBooking }) => {
+  const navigate = useNavigate();
   const averageRating =
     house.reviews.length > 0
       ? (
@@ -19,10 +22,13 @@ export const House: React.FC<Props> = ({ house }) => {
     <div className="flex  items-center justify-center bg-slate-50 px-4 py-8 w-4xl">
       <div className="w-full max-w-5xl overflow-hidden rounded-xl border border-slate-200 bg-white shadow-sm">
         <div className="flex flex-col lg:flex-row">
-          <img
+          <Image
             src={house.image || ''}
             alt={house.name}
             className="h-80 w-full object-cover lg:h-full lg:w-[45%]"
+            width={400}
+            aspectRatio={1}
+            layout="constrained"
           />
 
           <div className="flex flex-1 flex-col gap-4 p-6">
@@ -36,7 +42,7 @@ export const House: React.FC<Props> = ({ house }) => {
                 </p>
               </div>
               <span className="rounded-full bg-sky-100 px-3 py-1 text-sm font-medium text-sky-700">
-                {house.price}€
+                {house.price}€ /noche
               </span>
             </div>
 
@@ -65,14 +71,47 @@ export const House: React.FC<Props> = ({ house }) => {
                 </p>
               </div>
 
-              <Link
-                to="/houses"
+              <button
                 className="inline-flex items-center rounded-md border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-100"
+                onClick={handleHouseBooking}
               >
-                Ir a listado de casas
-              </Link>
+                {house.isBooked ? 'Descartar reserva' : 'Reservar'}
+              </button>
             </div>
           </div>
+        </div>
+
+        <div className="flex flex-col border-t border-slate-200 pt-4 m-4 gap-10">
+          {house.reviews.map((review) => (
+            <div>
+              <span>{review.author}</span>
+              <div className="flex flex-row items-center gap-9">
+                <div className="flex flex-row items-center">
+                  <Image
+                    src="/icon-star.png"
+                    width={20}
+                    aspectRatio={1}
+                    layout="constrained"
+                  />
+                  {review.rating}
+                </div>
+                <span>{review.date}</span>
+              </div>
+              <div>
+                <span>{review.comment}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="flex justify-end">
+          <button
+            className="inline-flex items-center rounded-md border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-100"
+            onClick={() => {
+              navigate({ to: '/houses', search: { filter: '' } });
+            }}
+          >
+            Ir a listado de casas
+          </button>
         </div>
       </div>
     </div>

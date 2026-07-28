@@ -14,6 +14,7 @@ export const mapHouseItemToVm = (apiVM: am.HouseEntity): vm.HouseVm => {
         bathrooms: apiVM.bathrooms,
         price: apiVM.price,
         image: `${ENV.BASE_PICTURES_URL}${apiVM.image}`,
+        isBooked: apiVM.isBooked,
         reviews: apiVM.reviews?.map(r => ({
             id: r.id,
             author: r.author,
