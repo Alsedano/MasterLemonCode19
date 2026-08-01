@@ -11,7 +11,7 @@ const RootPage = () => {
   return (
     <>
       <h2>Hello from Nextjs</h2>
-      <Link href="/houses">Navigate to house list</Link>
+      <Link href={routeConstants.houseList}>Navigate to house list</Link>
     </>
   );
 };

@@ -1,13 +1,33 @@
+'use client';
 import React from 'react';
 import { HouseVm } from './house.vm';
 import Image from 'next/image';
+import Link from 'next/link';
+import { routeConstants } from '#core/constants';
+import { mapHouseItemToVm } from './repository';
+import { api } from './repository/api';
+import { useRouter } from 'next/navigation';
 
 interface Props {
   house: HouseVm;
-  handleHouseBooking;
 }
 
-export const House: React.FC<Props> = ({ house, handleHouseBooking }) => {
+export const House: React.FC<Props> = ({ house }) => {
+  const router = useRouter();
+
+  const handleHouseBooking = async () => {
+    try {
+      const houseEntity = mapHouseItemToVm({
+        ...house,
+        isBooked: !house.isBooked,
+      });
+      await api.bookHouse(houseEntity);
+      router.push(routeConstants.houseList);
+    } catch (error) {
+      console.error({ error });
+    }
+  };
+
   const averageRating = 0;
   house.reviews.length > 0
     ? (
@@ -102,14 +122,12 @@ export const House: React.FC<Props> = ({ house, handleHouseBooking }) => {
           ))}
         </div>
         <div className="flex justify-end">
-          <button
+          <Link
             className="inline-flex items-center rounded-md border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-100"
-            /* onClick={() => {
-              navigate({ to: '/houses', search: { filter: '' } });
-            }} */
+            href={routeConstants.houseList}
           >
             Ir a listado de casas
-          </button>
+          </Link>
         </div>
       </div>
     </div>

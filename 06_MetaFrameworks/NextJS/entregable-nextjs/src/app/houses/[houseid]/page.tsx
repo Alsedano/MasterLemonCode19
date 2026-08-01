@@ -9,7 +9,6 @@ interface Props {
 
 export const generateMetadata = async (props: Props): Promise<Metadata> => {
   const params = await props.params;
-  console.log(`Api call from page with id: ${params}`);
   const houseEntity = await api.getHouse(params.houseId);
   /* const HouseVM = mapHouseItemToVm(houseEntity); */
   return {
