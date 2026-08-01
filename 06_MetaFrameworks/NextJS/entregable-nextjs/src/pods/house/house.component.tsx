@@ -81,7 +81,7 @@ export const House: React.FC<Props> = ({ house, handleHouseBooking }) => {
 
         <div className="flex flex-col border-t border-slate-200 pt-4 m-4 gap-10">
           {house.reviews.map((review) => (
-            <div>
+            <div key={review.id}>
               <span>{review.author}</span>
               <div className="flex flex-row items-center gap-9">
                 <div className="flex flex-row items-center">

@@ -9,14 +9,6 @@ const HousesLayout = (props: Props) => {
   const { children } = props;
   return (
     <>
-      <div
-        style={{
-          backgroundColor: 'teal',
-          color: 'white',
-        }}
-      >
-        Common layout
-      </div>
       {/* <HouseContainer house={mapHouseItemToVm(house)}></HouseContainer> */}
       {children}
     </>
