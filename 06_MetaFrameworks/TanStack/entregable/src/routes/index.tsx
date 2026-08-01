@@ -1,5 +1,5 @@
 import { HouseListContainer, mapHousesEntityToVm } from '#pods/house-list';
-import { createFileRoute, Link } from '@tanstack/react-router';
+import { createFileRoute } from '@tanstack/react-router';
 import { api } from '#pods/house-list';
 
 export const Route = createFileRoute('/')({
