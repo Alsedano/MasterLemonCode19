@@ -18,5 +18,6 @@ export interface HouseEntity {
   price: number;
   image: string;
   isBooked: boolean;
+  amenities: string[];
   reviews: ReviewLisEntity[];
 }

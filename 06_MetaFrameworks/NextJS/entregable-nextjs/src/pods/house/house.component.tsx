@@ -1,33 +1,15 @@
-'use client';
 import React from 'react';
 import { HouseVm } from './house.vm';
 import Image from 'next/image';
 import Link from 'next/link';
 import { routeConstants } from '#core/constants';
-import { mapHouseItemToVm } from './repository';
-import { api } from './repository/api';
-import { useRouter } from 'next/navigation';
+import { BookButton } from './components/book-button/book-button.component';
 
 interface Props {
   house: HouseVm;
 }
 
 export const House: React.FC<Props> = ({ house }) => {
-  const router = useRouter();
-
-  const handleHouseBooking = async () => {
-    try {
-      const houseEntity = mapHouseItemToVm({
-        ...house,
-        isBooked: !house.isBooked,
-      });
-      await api.bookHouse(houseEntity);
-      router.push(routeConstants.houseList);
-    } catch (error) {
-      console.error({ error });
-    }
-  };
-
   const averageRating = 0;
   house.reviews.length > 0
     ? (
@@ -46,7 +28,6 @@ export const House: React.FC<Props> = ({ house }) => {
             className="h-80 w-full object-cover lg:h-full lg:w-[45%]"
             width={400}
             height={400}
-            layout="constrained"
           />
 
           <div className="flex flex-1 flex-col gap-4 p-6">
@@ -89,17 +70,22 @@ export const House: React.FC<Props> = ({ house }) => {
                 </p>
               </div>
 
-              <button
-                className="inline-flex items-center rounded-md border border-slate-300 px-4 py-2 text-sm font-medium text-slate-700 transition hover:bg-slate-100"
-                onClick={handleHouseBooking}
-              >
-                {house.isBooked ? 'Descartar reserva' : 'Reservar'}
-              </button>
+              <BookButton house={house}></BookButton>
             </div>
           </div>
         </div>
 
+        <div className="flex flex-col border-t border-slate-200 pt-4 m-4 ">
+          <span className="font-bold">¿Qué hay en este alojamiento?</span>
+          {house.amenities.map((amenity) => (
+            <div key={house.amenities.indexOf(amenity)}>
+              <span>{amenity}</span>
+            </div>
+          ))}
+        </div>
+
         <div className="flex flex-col border-t border-slate-200 pt-4 m-4 gap-10">
+          <span className="font-bold">Opiniones</span>
           {house.reviews.map((review) => (
             <div key={review.id}>
               <span>{review.author}</span>

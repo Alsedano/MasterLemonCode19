@@ -9,8 +9,9 @@ interface Props {
 
 export const generateMetadata = async (props: Props): Promise<Metadata> => {
   const params = await props.params;
-  const houseEntity = await api.getHouse(params.houseId);
-  /* const HouseVM = mapHouseItemToVm(houseEntity); */
+  const houseEntity = await api.getHouse(params.houseId, {
+    cache: 'force-cache',
+  });
   return {
     title: `Rent a house - House ${houseEntity.name} details`,
   };
@@ -22,8 +23,9 @@ export async function generateStaticParams() {
 
 const HousePage = async (props: Props) => {
   const params = await props.params;
-  const house = await api.getHouse(params.houseId);
-  console.log('House page', house);
+  const house = await api.getHouse(params.houseId, {
+    next: { revalidate: 10 },
+  });
 
   return (
     <>

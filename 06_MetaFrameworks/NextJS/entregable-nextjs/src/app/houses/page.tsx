@@ -7,7 +7,8 @@ export const metadata: Metadata = {
 
 const HouseListPage = async () => {
   // cache: 'force-cache' is the default value
-  const houseList = await api.getHouseList({ next: { revalidate: 10 } }); // In seconds
+  const houseList = await api.getHouseList({ cache: 'no-store' });
+  //const houseList = await api.getHouseList({ next: { revalidate: 10 } }); // In seconds
 
   return (
     <HouseListContainer

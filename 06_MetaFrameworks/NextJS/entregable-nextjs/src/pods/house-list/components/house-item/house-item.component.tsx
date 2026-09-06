@@ -30,6 +30,7 @@ export const HouseItem: React.FC<Props> = ({ house }) => {
           alt={house.name}
           width={200}
           height={500}
+          loading="eager"
         />
         <div>
           <p>

@@ -7,12 +7,7 @@ interface Props {
 
 const HousesLayout = (props: Props) => {
   const { children } = props;
-  return (
-    <>
-      {/* <HouseContainer house={mapHouseItemToVm(house)}></HouseContainer> */}
-      {children}
-    </>
-  );
+  return <>{children}</>;
 };
 
 export default HousesLayout;
