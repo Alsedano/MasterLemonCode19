@@ -47,7 +47,14 @@ export const HouseItem: React.FC<Props> = ({ house }) => {
             {house.price}€ /noche
           </span>
           <div className="flex flex-row items-center">
-            <img src="/icon-star.png" alt="logo" className="size-4" />
+            <Image
+              src="/icon-star.png"
+              alt="logo"
+              className="size-4"
+              layout="constrained"
+              width={4}
+              height={4}
+            />
             {house.reviewAverage}
           </div>
         </div>

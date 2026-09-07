@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from '@tanstack/react-router';
+import { createFileRoute } from '@tanstack/react-router';
 import { api, HouseContainer } from '#pods/house';
 import { mapHouseItemToVm } from '#pods/house/repository';
 

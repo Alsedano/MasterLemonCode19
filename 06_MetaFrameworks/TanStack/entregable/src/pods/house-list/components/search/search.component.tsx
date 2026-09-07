@@ -1,5 +1,6 @@
 import { useNavigate } from '@tanstack/react-router';
 import React, { useRef } from 'react';
+import { Image } from '@unpic/react';
 
 export const Search: React.FC = () => {
   const inputRef = useRef<HTMLInputElement>(null);
@@ -28,7 +29,13 @@ export const Search: React.FC = () => {
         aria-label="search"
         onClick={() => filterByName(inputRef.current?.value || '')}
       >
-        <img src="/icons8-search.png" className="size-4" />
+        <Image
+          src="/icons8-search.png"
+          className="size-4"
+          layout="constrained"
+          width={4}
+          height={4}
+        />
       </button>
     </form>
   );
