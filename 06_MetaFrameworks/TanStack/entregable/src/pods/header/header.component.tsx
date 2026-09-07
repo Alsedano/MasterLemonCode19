@@ -4,7 +4,7 @@ import { Image } from '@unpic/react';
 
 export const Header: React.FC = () => {
   return (
-    <div className="flex h-10 flex-row items-center justify-between bg-sky-400 px-2.5 py-2.5">
+    <div className="flex h-10 flex-row items-center justify-between bg-green-400 px-2.5 py-2.5">
       <Link to="/">
         <Image
           src="/home-logo.png"
