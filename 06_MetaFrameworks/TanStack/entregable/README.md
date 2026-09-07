@@ -1,4 +1,4 @@
-# Entegable TanStack Start
+# Entregable TanStack Start
 
 ## Issues:
 
