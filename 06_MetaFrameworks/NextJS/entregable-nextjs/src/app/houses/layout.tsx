@@ -1,6 +1,3 @@
-import { HouseContainer } from '#pods/house';
-import { mapHouseItemToVm } from '#pods/house/repository';
-
 interface Props {
   children: React.ReactNode;
 }

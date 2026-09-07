@@ -5,10 +5,24 @@ export const metadata: Metadata = {
   title: 'Rent a house - House list',
 };
 
-const HouseListPage = async () => {
-  // cache: 'force-cache' is the default value
-  const houseList = await api.getHouseList({ cache: 'no-store' });
-  //const houseList = await api.getHouseList({ next: { revalidate: 10 } }); // In seconds
+interface Props {
+  searchParams?: {
+    filter?: string;
+  };
+}
+
+const HouseListPage = async (props: Props) => {
+  const searchParams = await props.searchParams;
+  const filterQuery = searchParams?.filter || '';
+
+  const houseList = await api.getHouseList({
+    req: { cache: 'no-store' }, // cache: 'force-cache' is the default value
+    searchParams: { query: String(filterQuery) },
+  });
+  /* const houseList = await api.getHouseList({
+    req: { next: { revalidate: 10 } },
+    searchParams: { query: String(filterQuery) },
+  }); // In seconds */
 
   return (
     <HouseListContainer

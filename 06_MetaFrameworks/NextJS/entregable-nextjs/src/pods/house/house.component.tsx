@@ -10,13 +10,13 @@ interface Props {
 }
 
 export const House: React.FC<Props> = ({ house }) => {
-  const averageRating = 0;
-  house.reviews.length > 0
-    ? (
-        house.reviews.reduce((total, review) => total + review.rating, 0) /
-        house.reviews.length
-      ).toFixed(1)
-    : '0.0';
+  const averageRatingStr =
+    house.reviews.length > 0
+      ? (
+          house.reviews.reduce((total, review) => total + review.rating, 0) /
+          house.reviews.length
+        ).toFixed(1)
+      : '0.0';
 
   return (
     <div className="flex  items-center justify-center bg-slate-50 px-4 py-8 w-4xl">
@@ -66,7 +66,7 @@ export const House: React.FC<Props> = ({ house }) => {
                   Reviews: {house.reviews.length}
                 </p>
                 <p className="text-sm text-slate-500">
-                  Rating: {averageRating}/5
+                  Rating: {averageRatingStr}/5
                 </p>
               </div>
 

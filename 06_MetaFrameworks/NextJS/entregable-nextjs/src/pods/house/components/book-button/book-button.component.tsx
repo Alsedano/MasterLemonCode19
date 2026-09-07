@@ -18,8 +18,6 @@ export const BookButton: React.FC<Props> = ({ house }) => {
     setBook(house.isBooked ?? false);
   }, [house.isBooked]);
 
-  console.log(`*************** houseId: ${house.id} isBooked: ${book}`);
-
   const handleHouseBooking = async () => {
     try {
       const houseEntity = mapHouseItemToVm({

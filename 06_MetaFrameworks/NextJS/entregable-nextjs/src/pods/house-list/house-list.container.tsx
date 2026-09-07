@@ -10,7 +10,7 @@ interface Props {
 export const HouseListContainer: React.FC<Props> = ({ houses }) => {
   return (
     <div className="flex flex-col gap-4 p-2">
-      {/* <SearchContainer></SearchContainer> */}
+      <SearchContainer></SearchContainer>
       <Houses houses={houses}></Houses>
     </div>
   );
