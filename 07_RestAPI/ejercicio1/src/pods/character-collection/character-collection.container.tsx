@@ -1,71 +1,42 @@
 import * as React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { linkRoutes } from '#core/router';
-import {
-  mapRickMortyMembersEntityToVm,
-  useCharacterCollection,
-} from './character-collection.hook';
+import { useCharacterCollection } from './character-collection.hook';
 import { CharacterCollectionComponent } from './character-collection.component';
-import { CharacterEntityVm } from './character-collection.vm';
-import { GridFilterModel } from '@mui/x-data-grid';
-import { useDebounce } from '#hooks/debounce.hook';
-import { getCharacterByName } from './api';
-import { mapCharacterFromApiToVm } from '#pods/character/character.mappers.js';
+import { GridDataSource, GridGetRowsParams } from '@mui/x-data-grid';
+import { SearchContext } from '../search/search.provider';
 
 export const CharacterCollectionContainer = () => {
   const { CharacterCollection, loadCharacterCollection } =
     useCharacterCollection();
-  const [memberRoot, setMemberRoot] = React.useState<CharacterEntityVm>();
-  const [loading, setLoading] = React.useState(true);
 
-  const members = memberRoot?.members ?? [];
   const navigate = useNavigate();
+
+  const { searchText } = React.useContext(SearchContext);
 
   const [paginationModel, setPaginationModel] = React.useState({
     pageSize: 30,
     page: 0,
   });
 
-  const [filterModel, setFilterModel] = React.useState<GridFilterModel>({
-    items: [],
-    quickFilterExcludeHiddenColumns: true,
-    quickFilterValues: [],
-  });
-
-  const debouncedPaginationModel = useDebounce(paginationModel, 500);
-
-  const getCharacterFilteredByName = async (name: string) => {
-    getCharacterByName(name)
-      .then((characterCollection) => {
-        setMemberRoot(mapRickMortyMembersEntityToVm(characterCollection));
-      })
-      .catch()
-      .finally(() => setLoading(false));
-  };
-
   React.useEffect(() => {
-    loadCharacterCollection(paginationModel.page);
-    setMemberRoot(CharacterCollection);
+    loadCharacterCollection(searchText, paginationModel.page);
     setPaginationModel((prev) => ({
       ...prev,
       pageSize: Math.min(CharacterCollection.totalCount, 30),
     }));
-    setLoading(false);
-  }, [debouncedPaginationModel.page]);
+  }, [searchText]);
 
-  const handleFilterModelChange = React.useCallback(
-    (newModel: GridFilterModel) => {
-      setFilterModel(newModel);
+  const customDataSource: GridDataSource = {
+    getRows: async (params: GridGetRowsParams) => {
+      loadCharacterCollection(searchText, params.paginationModel?.page);
 
-      const quickFilterNameValue = newModel.quickFilterValues?.[0];
-
-      if (quickFilterNameValue) {
-        console.log('Buscando en servidor:', quickFilterNameValue);
-        getCharacterFilteredByName(quickFilterNameValue);
-      }
+      return {
+        rows: CharacterCollection.members,
+        rowCount: CharacterCollection.totalCount,
+      };
     },
-    []
-  );
+  };
 
   const handleCreateCharacter = () => {
     navigate(linkRoutes.createCharacter);
@@ -77,12 +48,8 @@ export const CharacterCollectionContainer = () => {
 
   return (
     <CharacterCollectionComponent
-      CharacterCollection={CharacterCollection}
-      membersCount={memberRoot?.totalCount ?? members.length}
-      loading={loading}
+      customDataSource={customDataSource}
       paginationModel={paginationModel}
-      setPaginationModel={setPaginationModel}
-      handleFilterModelChange={handleFilterModelChange}
       onCreateCharacter={handleCreateCharacter}
       onEdit={handleEdit}
     />

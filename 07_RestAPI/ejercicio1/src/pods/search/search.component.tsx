@@ -1,7 +1,6 @@
 import { IconButton, InputBase, Paper } from '@mui/material';
 import React, { useRef } from 'react';
 import SearchIcon from '@mui/icons-material/Search';
-import { red } from '@mui/material/colors';
 
 interface Props {
   textSearch: string;
@@ -24,10 +23,11 @@ export const Search: React.FC<Props> = ({ textSearch, setTextSearch }) => {
         component="form"
         sx={{
           p: '2px 4px',
+          mb: '20px',
           display: 'flex',
           alignItems: 'center',
           width: '80%',
-          bgcolor: 'deepskyblue',
+          bgcolor: 'lightcyan',
         }}
       >
         <InputBase
@@ -41,6 +41,7 @@ export const Search: React.FC<Props> = ({ textSearch, setTextSearch }) => {
           sx={{ p: '10px' }}
           aria-label="search"
           onClick={() => {
+            console.log(`set setTextSearch: ${inputRef.current?.value}`);
             setTextSearch(inputRef.current?.value || '');
           }}
         >

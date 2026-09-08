@@ -2,6 +2,7 @@ import React from 'react';
 import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { switchRoutes } from './routes';
 import { CharacterCollectionScene, CharacterScene } from '#scenes';
+import { SearchProvider } from '#pods/search/search.provider';
 
 export const RouterComponent: React.FunctionComponent = () => {
   return (
@@ -9,7 +10,11 @@ export const RouterComponent: React.FunctionComponent = () => {
       <Routes>
         <Route
           path={switchRoutes.characterCollection}
-          element={<CharacterCollectionScene />}
+          element={
+            <SearchProvider>
+              <CharacterCollectionScene />
+            </SearchProvider>
+          }
         />
         <Route
           path={switchRoutes.createCharacter}
