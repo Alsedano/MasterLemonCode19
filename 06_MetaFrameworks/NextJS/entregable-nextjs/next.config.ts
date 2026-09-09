@@ -5,7 +5,7 @@ const nextConfig: NextConfig = {
         dangerouslyAllowLocalIP: true, // only for local development
         remotePatterns: [
             {
-                hostname: process.env.IMAGES_DOMAIN,
+                hostname: process.env.IMAGES_DOMAIN || 'localhost',
             },
         ],
     },
