@@ -4,12 +4,12 @@ import { api, HouseContainer } from '#pods/house';
 import { mapHouseItemToVm } from '#pods/house/repository';
 
 interface Props {
-  params: Promise<{ houseId: string }>;
+  params: Promise<{ houseid: string }>;
 }
 
 export const generateMetadata = async (props: Props): Promise<Metadata> => {
   const params = await props.params;
-  const houseEntity = await api.getHouse(params.houseId, {
+  const houseEntity = await api.getHouse(params.houseid, {
     cache: 'force-cache',
   });
   return {
@@ -18,12 +18,12 @@ export const generateMetadata = async (props: Props): Promise<Metadata> => {
 };
 
 export async function generateStaticParams() {
-  return [{ houseId: '1' }, { houseId: '2' }, { houseId: '3' }];
+  return [{ houseid: '1' }, { houseid: '2' }, { houseid: '3' }];
 }
 
 const HousePage = async (props: Props) => {
   const params = await props.params;
-  const house = await api.getHouse(params.houseId, {
+  const house = await api.getHouse(params.houseid, {
     next: { revalidate: 10 },
   });
 
