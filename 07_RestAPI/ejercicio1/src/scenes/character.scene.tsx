@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { AppLayout } from '#layouts';
-import { CharacterContainer } from '#pods/character';
+import { CharacterContainer } from '#pods/character-collection/components/character';
 
 interface Props {
   isReadOnly: boolean;

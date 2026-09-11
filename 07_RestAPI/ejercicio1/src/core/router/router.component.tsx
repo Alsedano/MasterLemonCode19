@@ -1,8 +1,13 @@
 import React from 'react';
 import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { switchRoutes } from './routes';
-import { CharacterCollectionScene, CharacterScene } from '#scenes';
+import {
+  CharacterCollectionScene,
+  CharacterScene,
+  CollectionScene,
+} from '#scenes';
 import { SearchProvider } from '#pods/search/search.provider';
+import { LocationScene } from '#scenes/location.scene.js';
 
 export const RouterComponent: React.FunctionComponent = () => {
   return (
@@ -12,7 +17,7 @@ export const RouterComponent: React.FunctionComponent = () => {
           path={switchRoutes.characterCollection}
           element={
             <SearchProvider>
-              <CharacterCollectionScene />
+              <CollectionScene />
             </SearchProvider>
           }
         />
@@ -21,7 +26,7 @@ export const RouterComponent: React.FunctionComponent = () => {
           element={<CharacterScene isReadOnly={false} />}
         />
         <Route
-          path={switchRoutes.detail}
+          path={switchRoutes.characterDetail}
           element={<CharacterScene isReadOnly={true} />}
         />
         <Route
@@ -31,6 +36,10 @@ export const RouterComponent: React.FunctionComponent = () => {
         <Route
           path={switchRoutes.root}
           element={<Navigate to={switchRoutes.characterCollection} />}
+        />
+        <Route
+          path={switchRoutes.locationDetail}
+          element={<LocationScene isReadOnly={true} />}
         />
       </Routes>
     </HashRouter>
