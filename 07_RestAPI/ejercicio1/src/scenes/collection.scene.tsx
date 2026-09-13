@@ -3,9 +3,13 @@ import { AppLayout } from '#layouts';
 import { SearchContainer } from '#pods/search';
 import { CollectionContainer } from '#pods/collections/collection.container';
 
-export const CollectionScene = () => (
+interface Props {
+  selectedTab: number;
+}
+
+export const CollectionScene = ({ selectedTab }) => (
   <AppLayout>
     <SearchContainer />
-    <CollectionContainer />
+    <CollectionContainer selectedTab={selectedTab} />
   </AppLayout>
 );

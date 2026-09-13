@@ -40,6 +40,7 @@ interface Props {
   children2: React.ReactNode;
   label3: string;
   children3: React.ReactNode;
+  selectedValue: number;
 }
 
 export default function BasicTabs<prop>({
@@ -49,8 +50,9 @@ export default function BasicTabs<prop>({
   children2,
   label3,
   children3,
+  selectedValue,
 }) {
-  const [value, setValue] = React.useState(0);
+  const [value, setValue] = React.useState(selectedValue);
 
   const handleChange = (event: React.SyntheticEvent, newValue: number) => {
     setValue(newValue);

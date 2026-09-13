@@ -2,8 +2,13 @@ import BasicTabs from '#common/components/tab/tab';
 import React from 'react';
 import { CharacterCollectionContainer } from '../character-collection';
 import { LocationCollectionContainer } from '../location-collection';
+import { EpisodeCollectionContainer } from '../episode-collection';
 
-export const CollectionComponent: React.FC = () => {
+interface Props {
+  selectedTab: number;
+}
+
+export const CollectionComponent: React.FC<Props> = ({ selectedTab }) => {
   return (
     <>
       <BasicTabs
@@ -12,7 +17,8 @@ export const CollectionComponent: React.FC = () => {
         label2={'Lugares'}
         children2={<LocationCollectionContainer />}
         label3={'Episodios'}
-        children3={<CharacterCollectionContainer />}
+        children3={<EpisodeCollectionContainer />}
+        selectedValue={selectedTab}
       ></BasicTabs>
     </>
   );

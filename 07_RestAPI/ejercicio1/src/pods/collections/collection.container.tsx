@@ -1,10 +1,14 @@
 import React from 'react';
 import { CollectionComponent } from './collection.component';
 
-export const CollectionContainer: React.FC = () => {
+interface Props {
+  selectedTab: number;
+}
+
+export const CollectionContainer: React.FC<Props> = ({ selectedTab }) => {
   return (
     <>
-      <CollectionComponent></CollectionComponent>
+      <CollectionComponent selectedTab={selectedTab}></CollectionComponent>
     </>
   );
 };
