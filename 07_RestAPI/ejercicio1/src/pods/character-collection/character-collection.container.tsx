@@ -29,8 +29,6 @@ export const CharacterCollectionContainer = () => {
 
   const customDataSource: GridDataSource = {
     getRows: async (params: GridGetRowsParams) => {
-      loadCharacterCollection(searchText, params.paginationModel?.page);
-
       return {
         rows: CharacterCollection.members,
         rowCount: CharacterCollection.totalCount,
