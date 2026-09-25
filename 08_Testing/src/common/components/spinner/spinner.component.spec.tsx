@@ -9,7 +9,7 @@ vi.mock('react-promise-tracker', () => ({
 const usePromiseTrackerMock = vi.mocked(promiseTracker.usePromiseTracker);
 
 describe('common/Spinner Component', () => {
-  it('should render if promise in progress', async () => {
+  it('should render if promise in progress', () => {
     // Arrange
     usePromiseTrackerMock.mockReturnValue({ promiseInProgress: true });
     // Act
@@ -21,7 +21,7 @@ describe('common/Spinner Component', () => {
     expect(element).toBeInTheDocument();
   });
 
-  it('should render if promise completed', async () => {
+  it('should not render if promise completed', () => {
     // Arrange
     usePromiseTrackerMock.mockReturnValue({ promiseInProgress: false });
 
