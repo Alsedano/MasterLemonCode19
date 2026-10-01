@@ -1,10 +1,11 @@
 name: CI workflow for optional testing
 
-on: pull_request
-push:
-  branches:
-    - main
-    - feature/laboratorio-testing-obligatorio
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+      - feature/laboratorio-testing-obligatorio
 jobs:
   ci:
     runs-on: ubuntu-latest
