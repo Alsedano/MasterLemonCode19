@@ -5,6 +5,7 @@ on: pull_request
 jobs:
   ci:
     runs-on: ubuntu-latest
+    working-directory: ./08_Testing
     steps:
       - name: Checkout repository
         uses: actions/checkout@v7
